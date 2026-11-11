@@ -1,0 +1,159 @@
+/* raspiBackup Pro – refreshed styling for all regular Zakra pages
+   (documents, articles, search, …). Only CSS: Zakra's header, Polylang menus
+   and widgets keep working unchanged. Disable in Customizer → raspiBackup Pro. */
+
+body.rbp-inner {
+	--rbp-navy-950: #0d0e22;
+	--rbp-navy-900: #14152b;
+	--rbp-navy-700: #313152;
+	--rbp-berry: #c8124b;
+	--rbp-berry-600: #a10d39;
+	--rbp-berry-300: #ff6f98;
+	--rbp-green: #75aa27;
+	--rbp-ink: #121427;
+	--rbp-text: #3c4157;
+	--rbp-muted: #626883;
+	--rbp-line: #e5e7f0;
+	--rbp-tint: #f6f7fb;
+	--rbp-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Ubuntu, Cantarell, Arial, sans-serif;
+
+	background: var(--rbp-tint);
+	color: var(--rbp-text);
+	font-family: var(--rbp-font);
+	font-size: 17px;
+	line-height: 1.7;
+	-webkit-font-smoothing: antialiased;
+}
+body.rbp-inner h1, body.rbp-inner h2, body.rbp-inner h3,
+body.rbp-inner h4, body.rbp-inner h5, body.rbp-inner h6,
+body.rbp-inner .zak-page-title, body.rbp-inner .zak-site-title {
+	font-family: var(--rbp-font) !important;
+	color: var(--rbp-ink);
+	letter-spacing: -.015em;
+}
+body.rbp-inner a { color: var(--rbp-berry); }
+body.rbp-inner a:hover { color: var(--rbp-berry-600); }
+
+/* Header – works for Zakra's classic header and the newer header builder */
+body.rbp-inner #zak-masthead {
+	background: rgba(13, 14, 34, .94) !important;
+	backdrop-filter: saturate(160%) blur(12px);
+	-webkit-backdrop-filter: saturate(160%) blur(12px);
+	border-bottom: 1px solid rgba(255, 255, 255, .08) !important;
+	position: sticky; top: 0; z-index: 100;
+}
+body.rbp-inner.admin-bar #zak-masthead { top: 32px; }
+body.rbp-inner #zak-masthead .zak-main-header,
+body.rbp-inner #zak-masthead .zak-header-main-row,
+body.rbp-inner #zak-masthead .zak-header-top-row,
+body.rbp-inner #zak-masthead .zak-header-bottom-row,
+body.rbp-inner #zak-masthead .zak-row,
+body.rbp-inner #zak-masthead .zak-main-nav { background: transparent !important; border-color: transparent !important; }
+body.rbp-inner #zak-masthead .site-title,
+body.rbp-inner #zak-masthead .site-title a,
+body.rbp-inner #zak-masthead .zak-site-title,
+body.rbp-inner #zak-masthead .zak-site-title a { color: #fff !important; font-weight: 700; font-family: var(--rbp-font) !important; font-size: clamp(18px, 2vw, 24px) !important; line-height: 1.25 !important; letter-spacing: -.01em; }
+body.rbp-inner #zak-masthead .site-description,
+body.rbp-inner #zak-masthead .zak-site-description { color: rgba(255, 255, 255, .6) !important; font-size: 13px; }
+body.rbp-inner #zak-masthead .zak-primary-menu > li > a { color: rgba(255, 255, 255, .8) !important; font-weight: 500; }
+body.rbp-inner #zak-masthead .zak-primary-menu > li > a:hover,
+body.rbp-inner #zak-masthead .zak-primary-menu > li.current-menu-item > a,
+body.rbp-inner #zak-masthead .zak-primary-menu > li.current-lang > a { color: #fff !important; }
+body.rbp-inner #zak-masthead .zak-primary-menu .sub-menu { background: var(--rbp-navy-900) !important; border-radius: 10px; border: 1px solid rgba(255, 255, 255, .1); }
+body.rbp-inner #zak-masthead svg,
+body.rbp-inner #zak-masthead .zak-icon { fill: #fff !important; color: #fff !important; }
+body.rbp-inner #zak-masthead .zak-menu-toggle,
+body.rbp-inner #zak-masthead .zak-toggle-menu { color: #fff !important; }
+body.rbp-inner .zak-mobile-nav { background: var(--rbp-navy-950) !important; }
+body.rbp-inner .zak-mobile-nav a { color: rgba(255, 255, 255, .85) !important; }
+body.rbp-inner .zak-mobile-nav svg { fill: #fff !important; }
+
+/* Logo on a light tile so it stays visible on the dark header */
+body.rbp-inner #zak-masthead .custom-logo-link { display: inline-flex; }
+body.rbp-inner #zak-masthead .custom-logo {
+	width: auto !important; height: 52px !important; max-height: none !important;
+	padding: 5px 9px; border-radius: 12px; background: #fff;
+	box-shadow: 0 0 0 1px rgba(255, 255, 255, .25), 0 6px 18px -6px rgba(200, 18, 75, .75);
+}
+
+/* Page header / breadcrumbs */
+body.rbp-inner .zak-page-header {
+	background: linear-gradient(180deg, var(--rbp-navy-950), var(--rbp-navy-900)) !important;
+	border: 0 !important;
+	padding: 56px 0 48px !important;
+}
+body.rbp-inner .zak-page-header .zak-page-title,
+body.rbp-inner .zak-page-header__title h1 { color: #fff !important; font-size: clamp(28px, 4vw, 42px); font-weight: 800; }
+body.rbp-inner .zak-breadcrumbs, body.rbp-inner .zak-breadcrumbs a,
+body.rbp-inner .zak-breadcrumbs span { color: rgba(255, 255, 255, .6) !important; }
+
+/* Content as card */
+body.rbp-inner .zak-site,
+body.rbp-inner .zak-content { background: var(--rbp-tint) !important; }
+body.rbp-inner .zak-content { padding-top: 48px; padding-bottom: 72px; }
+body.rbp-inner .zak-primary > article,
+body.rbp-inner .zak-primary > .zak-post,
+body.rbp-inner.zak-content-area--bordered .zak-primary > article {
+	background: #fff;
+	border: 1px solid var(--rbp-line) !important;
+	border-radius: 16px;
+	padding: clamp(24px, 4vw, 48px);
+	box-shadow: 0 1px 2px rgba(18, 20, 39, .04), 0 8px 24px -8px rgba(18, 20, 39, .1);
+}
+body.rbp-inner.has-page-header .zak-entry-header { display: none; } /* title already shown in page header */
+body.rbp-inner .entry-content > * + * { margin-top: 1em; }
+body.rbp-inner .entry-content h2 { font-size: 28px; margin-top: 1.6em; }
+body.rbp-inner .entry-content h3 { font-size: 22px; margin-top: 1.4em; }
+body.rbp-inner .entry-content code,
+body.rbp-inner .entry-content pre {
+	font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+	background: var(--rbp-navy-900); color: #e7e9f5; border-radius: 8px;
+}
+body.rbp-inner .entry-content code { padding: 2px 6px; font-size: .9em; }
+body.rbp-inner .entry-content pre { padding: 16px 20px; overflow-x: auto; }
+body.rbp-inner .entry-content pre code { padding: 0; background: none; }
+body.rbp-inner .entry-content img { border-radius: 10px; }
+body.rbp-inner .entry-content table { border-collapse: collapse; width: 100%; }
+body.rbp-inner .entry-content th, body.rbp-inner .entry-content td { border-bottom: 1px solid var(--rbp-line); padding: 10px 12px; text-align: left; }
+
+/* Simple File List (Documents page) */
+body.rbp-inner .eeSFL table, body.rbp-inner #eeSFL table { border-radius: 12px; overflow: hidden; border: 1px solid var(--rbp-line); }
+body.rbp-inner .eeSFL a, body.rbp-inner #eeSFL a { font-weight: 600; }
+
+/* Sidebar widgets */
+body.rbp-inner .zak-secondary .widget,
+body.rbp-inner .zak-secondary section {
+	background: #fff; border: 1px solid var(--rbp-line); border-radius: 14px; padding: 24px; margin-bottom: 24px;
+}
+body.rbp-inner .zak-secondary .widget-title,
+body.rbp-inner .zak-secondary h2 { font-size: 14px !important; text-transform: uppercase; letter-spacing: .08em; color: var(--rbp-muted) !important; }
+
+/* Buttons & forms */
+body.rbp-inner .wp-block-button__link,
+body.rbp-inner button:not(.zak-menu-toggle):not(.zak-mobile-nav-close):not(.zak-header-search__toggle),
+body.rbp-inner input[type="submit"] {
+	background: var(--rbp-berry) !important; color: #fff !important; border: 0 !important;
+	border-radius: 999px !important; padding: 10px 20px; font-weight: 600;
+}
+body.rbp-inner .wp-block-button__link:hover,
+body.rbp-inner input[type="submit"]:hover { background: var(--rbp-berry-600) !important; }
+body.rbp-inner input[type="search"], body.rbp-inner input[type="text"], body.rbp-inner input[type="email"], body.rbp-inner textarea {
+	border: 1px solid var(--rbp-line); border-radius: 10px; padding: 10px 14px; font-family: var(--rbp-font);
+}
+
+/* Footer */
+body.rbp-inner .zak-footer,
+body.rbp-inner .zak-footer-bar,
+body.rbp-inner .zak-footer-builder,
+body.rbp-inner .zak-footer-builder .zak-footer-bottom-row { background: var(--rbp-navy-950) !important; color: rgba(255, 255, 255, .6) !important; border: 0 !important; }
+body.rbp-inner .zak-footer a { color: rgba(255, 255, 255, .8) !important; }
+body.rbp-inner .zak-footer a:hover { color: #fff !important; }
+body.rbp-inner .zak-scroll-to-top { background: var(--rbp-berry) !important; border-radius: 12px; }
+
+@media (max-width: 782px) {
+	body.rbp-inner.admin-bar #zak-masthead { top: 46px; }
+}
+@media (max-width: 600px) {
+	body.rbp-inner.admin-bar #zak-masthead { top: 0; }
+	body.rbp-inner { font-size: 16px; }
+}

@@ -1,0 +1,15 @@
+/*
+Theme Name:   raspiBackup Pro
+Theme URI:    https://raspibackup.linux-tips-and-tricks.de
+Description:  Professional, bilingual (DE/EN, Polylang) landing page and refreshed styling for raspiBackup. Child theme of Zakra – switch back to "Zakra" at any time to restore the classic layout. Nothing in your pages or Zakra settings is changed.
+Author:       framp
+Template:     zakra
+Version:      1.0.0
+Requires at least: 6.0
+Requires PHP: 7.4
+License:      GNU General Public License v3 or later
+License URI:  https://www.gnu.org/licenses/gpl-3.0.html
+Text Domain:  raspibackup-pro
+*/
+
+/* Styles live in assets/css/landing.css (home page) and assets/css/inner.css (all other pages). */

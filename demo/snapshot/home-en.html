@@ -1,0 +1,693 @@
+
+<!doctype html>
+		<html lang="en-US">
+		
+	<head>
+
+				<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="profile" href="http://gmpg.org/xfn/11">
+		
+		<title>Create regularly and unattended a backup of your Raspberries - raspiBackup is the perfect opensource tool to create backups on Raspberries</title>
+<style>#wpadminbar #wp-admin-bar-wsm_free_top_button .ab-icon:before{content:"\f239";color:#ff9800;top:3px}</style><link rel="alternate" href="https://raspibackup.linux-tips-and-tricks.de/en/home/" hreflang="en"/>
+<link rel="alternate" href="https://raspibackup.linux-tips-and-tricks.de/de/home-deutsch/" hreflang="de"/>
+<link rel="alternate" href="https://raspibackup.linux-tips-and-tricks.de/" hreflang="x-default"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+<!-- The SEO Framework by Sybre Waaijer -->
+<meta name="robots" content="max-snippet:-1,max-image-preview:large,max-video-preview:-1"/>
+<link rel="canonical" href="https://raspibackup.linux-tips-and-tricks.de/en/home/"/>
+<meta name="description" content="No manual backup necessary. Regular backups will never be forgotten again. Either the first two RaspberryOS partitions are saved (normal backup mode) or a any…"/>
+<meta property="og:type" content="website"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:site_name" content="Create regularly and unattended a backup of your Raspberries"/>
+<meta property="og:title" content="Create regularly and unattended a backup of your Raspberries"/>
+<meta property="og:description" content="No manual backup necessary. Regular backups will never be forgotten again. Either the first two RaspberryOS partitions are saved (normal backup mode) or a any configurable partitions are saved…"/>
+<meta property="og:url" content="https://raspibackup.linux-tips-and-tricks.de/en/home/"/>
+<meta property="og:image" content="https://raspibackup.linux-tips-and-tricks.de/wp-content/uploads/2023/09/Icon_rot_blau_final_64.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:site" content="@linuxframp"/>
+<meta name="twitter:title" content="Create regularly and unattended a backup of your Raspberries"/>
+<meta name="twitter:description" content="No manual backup necessary. Regular backups will never be forgotten again. Either the first two RaspberryOS partitions are saved (normal backup mode) or a any configurable partitions are saved…"/>
+<meta name="twitter:image" content="https://raspibackup.linux-tips-and-tricks.de/wp-content/uploads/2023/09/Icon_rot_blau_final_64.png"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://raspibackup.linux-tips-and-tricks.de/en/home/#/schema/WebSite","url":"https://raspibackup.linux-tips-and-tricks.de/en/home/","name":"Create regularly and unattended a backup of your Raspberries","description":"raspiBackup is the perfect opensource tool to create backups on Raspberries","inLanguage":"en-US","potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://raspibackup.linux-tips-and-tricks.de/en/search/{search_term_string}/"},"query-input":"required name=search_term_string"},"publisher":{"@id":"https://raspibackup.linux-tips-and-tricks.de/en/home/#/schema/Organization"}},{"@type":"WebPage","@id":"https://raspibackup.linux-tips-and-tricks.de/en/home/","url":"https://raspibackup.linux-tips-and-tricks.de/en/home/","name":"Create regularly and unattended a backup of your Raspberries - raspiBackup is the perfect opensource tool to create backups on Raspberries","description":"No manual backup necessary. Regular backups will never be forgotten again. Either the first two RaspberryOS partitions are saved (normal backup mode) or a any…","inLanguage":"en-US","isPartOf":{"@id":"https://raspibackup.linux-tips-and-tricks.de/en/home/#/schema/WebSite"},"breadcrumb":{"@type":"BreadcrumbList","@id":"https://raspibackup.linux-tips-and-tricks.de/en/home/#/schema/BreadcrumbList","itemListElement":{"@type":"ListItem","position":1,"name":"Create regularly and unattended a backup of your Raspberries"}},"potentialAction":{"@type":"ReadAction","target":"https://raspibackup.linux-tips-and-tricks.de/en/home/"},"about":{"@id":"https://raspibackup.linux-tips-and-tricks.de/en/home/#/schema/Organization"}},{"@type":"Organization","@id":"https://raspibackup.linux-tips-and-tricks.de/en/home/#/schema/Organization","name":"Create regularly and unattended a backup of your Raspberries","url":"https://raspibackup.linux-tips-and-tricks.de/en/home/","logo":{"@type":"ImageObject","url":"https://raspibackup.linux-tips-and-tricks.de/wp-content/uploads/2023/09/Icon_rot_blau_final_32.png","contentUrl":"https://raspibackup.linux-tips-and-tricks.de/wp-content/uploads/2023/09/Icon_rot_blau_final_32.png","width":32,"height":50,"contentSize":"15284"}}]}</script>
+<!-- / The SEO Framework by Sybre Waaijer | 5.84ms meta | 3.82ms boot -->
+
+<link rel='dns-prefetch' href='//fonts.googleapis.com'/>
+<link rel="alternate" type="application/rss+xml" title="How to backup your Raspberries &raquo; Feed" href="https://raspibackup.linux-tips-and-tricks.de/en/feed/"/>
+<link rel="alternate" type="application/rss+xml" title="How to backup your Raspberries &raquo; Comments Feed" href="https://raspibackup.linux-tips-and-tricks.de/en/comments/feed/"/>
+<link rel="alternate" type="application/rss+xml" title="How to backup your Raspberries &raquo; Home Comments Feed" href="https://raspibackup.linux-tips-and-tricks.de/en/home/feed/"/>
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://raspibackup.linux-tips-and-tricks.de/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fraspibackup.linux-tips-and-tricks.de%2Fen%2Fhome%2F&#038;lang=en"/>
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://raspibackup.linux-tips-and-tricks.de/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fraspibackup.linux-tips-and-tricks.de%2Fen%2Fhome%2F&#038;format=xml&#038;lang=en"/>
+<style id="wp-img-auto-sizes-contain-inline-css">img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}</style>
+<style id="wp-emoji-styles-inline-css">img.wp-smiley,img.emoji{display:inline!important;border:none!important;box-shadow:none!important;height:1em!important;width:1em!important;margin:0 .07em!important;vertical-align:-.1em!important;background:none!important;padding:0!important}</style>
+<style id="wp-block-library-inline-css">:root{--wp-block-synced-color:#7a00df;--wp-block-synced-color--rgb:122 , 0 , 223;--wp-bound-block-color:var(--wp-block-synced-color);--wp-editor-canvas-background:#ddd;--wp-admin-theme-color:#007cba;--wp-admin-theme-color--rgb:0 , 124 , 186;--wp-admin-theme-color-darker-10:#006ba1;--wp-admin-theme-color-darker-10--rgb:0 , 107 , 160.5;--wp-admin-theme-color-darker-20:#005a87;--wp-admin-theme-color-darker-20--rgb:0 , 90 , 135;--wp-admin-border-width-focus:2px}@media (min-resolution:192dpi){:root{--wp-admin-border-width-focus:1.5px}}.wp-element-button{cursor:pointer}:root .has-very-light-gray-background-color{background-color:#eee}:root .has-very-dark-gray-background-color{background-color:#313131}:root .has-very-light-gray-color{color:#eee}:root .has-very-dark-gray-color{color:#313131}:root .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background{background:linear-gradient(135deg,#00d084,#0693e3)}:root .has-purple-crush-gradient-background{background:linear-gradient(135deg,#34e2e4,#4721fb 50%,#ab1dfe)}:root .has-hazy-dawn-gradient-background{background:linear-gradient(135deg,#faaca8,#dad0ec)}:root .has-subdued-olive-gradient-background{background:linear-gradient(135deg,#fafae1,#67a671)}:root .has-atomic-cream-gradient-background{background:linear-gradient(135deg,#fdd79a,#004a59)}:root .has-nightshade-gradient-background{background:linear-gradient(135deg,#330968,#31cdcf)}:root .has-midnight-gradient-background{background:linear-gradient(135deg,#020381,#2874fc)}:root{--wp--preset--font-size--normal:16px;--wp--preset--font-size--huge:42px}.has-regular-font-size{font-size:1em}.has-larger-font-size{font-size:2.625em}.has-normal-font-size{font-size:var(--wp--preset--font-size--normal)}.has-huge-font-size{font-size:var(--wp--preset--font-size--huge)}:root .has-text-align-center{text-align:center}:root .has-text-align-left{text-align:left}:root .has-text-align-right{text-align:right}.has-fit-text{white-space:nowrap!important}#end-resizable-editor-section{display:none}.aligncenter{clear:both}.items-justified-left{justify-content:flex-start}.items-justified-center{justify-content:center}.items-justified-right{justify-content:flex-end}.items-justified-space-between{justify-content:space-between}.screen-reader-text{word-wrap:normal!important;border:0;clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;word-break:normal!important}.screen-reader-text:focus{background-color:#ddd;clip-path:none;color:#444;display:block;font-size:1em;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000}html :where(.has-border-color){border-style:solid}html :where([style^=border-color],[style*=";border-color"],[style*="; border-color"]){border-style:solid}html :where([style^=border-top-color],[style*=";border-top-color"],[style*="; border-top-color"]){border-top-style:solid}html :where([style^=border-right-color],[style*=";border-right-color"],[style*="; border-right-color"]){border-right-style:solid}html :where([style^=border-bottom-color],[style*=";border-bottom-color"],[style*="; border-bottom-color"]){border-bottom-style:solid}html :where([style^=border-left-color],[style*=";border-left-color"],[style*="; border-left-color"]){border-left-style:solid}html :where([style^=border-width],[style*=";border-width"],[style*="; border-width"]){border-style:solid}html :where([style^=border-top-width],[style*=";border-top-width"],[style*="; border-top-width"]){border-top-style:solid}html :where([style^=border-right-width],[style*=";border-right-width"],[style*="; border-right-width"]){border-right-style:solid}html :where([style^=border-bottom-width],[style*=";border-bottom-width"],[style*="; border-bottom-width"]){border-bottom-style:solid}html :where([style^=border-left-width],[style*=";border-left-width"],[style*="; border-left-width"]){border-left-style:solid}html :where(img[class*=wp-image-]){height:auto;max-width:100%}:where(figure){margin:0 0 1em}html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:var(--wp-admin--admin-bar--height,0)}@media screen and (max-width:600px){html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:0}}</style>
+<style id="wp-block-heading-inline-css">h1:where(.wp-block-heading).has-background,h2:where(.wp-block-heading).has-background,h3:where(.wp-block-heading).has-background,h4:where(.wp-block-heading).has-background,h5:where(.wp-block-heading).has-background,h6:where(.wp-block-heading).has-background{padding:1.25em 2.375em}h1.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h1.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h2.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h2.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h3.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h3.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h4.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h4.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h5.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h5.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h6.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h6.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]){rotate:180deg}</style>
+<style id="wp-block-image-inline-css">.wp-block-image>a,.wp-block-image>figure>a{display:inline-block}.wp-block-image img{box-sizing:border-box;height:auto;max-width:100%;vertical-align:bottom}@media not (prefers-reduced-motion){.wp-block-image img.hide{visibility:hidden}.wp-block-image img.show{animation:show-content-image .4s}}.wp-block-image[style*="border-radius"] img,.wp-block-image[style*="border-radius"]>a{border-radius:inherit}.wp-block-image.has-custom-border img{box-sizing:border-box}.wp-block-image.aligncenter{text-align:center}.wp-block-image.alignfull>a,.wp-block-image.alignwide>a{width:100%}.wp-block-image.alignfull img,.wp-block-image.alignwide img{height:auto;width:100%}.wp-block-image .aligncenter,.wp-block-image .alignleft,.wp-block-image .alignright,.wp-block-image.aligncenter,.wp-block-image.alignleft,.wp-block-image.alignright{display:table}.wp-block-image .aligncenter>figcaption,.wp-block-image .alignleft>figcaption,.wp-block-image .alignright>figcaption,.wp-block-image.aligncenter>figcaption,.wp-block-image.alignleft>figcaption,.wp-block-image.alignright>figcaption{caption-side:bottom;display:table-caption}.wp-block-image .alignleft{float:left;margin:.5em 1em .5em 0}.wp-block-image .alignright{float:right;margin:.5em 0 .5em 1em}.wp-block-image .aligncenter{margin-left:auto;margin-right:auto}.wp-block-image :where(figcaption){margin-bottom:1em;margin-top:.5em}.wp-block-image.is-style-circle-mask img{border-radius:9999px}@supports ((-webkit-mask-image:none) or (mask-image:none)) or (-webkit-mask-image:none){.wp-block-image.is-style-circle-mask img{border-radius:0;-webkit-mask-image:url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50"/></svg>');mask-image:url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50"/></svg>');mask-mode:alpha;-webkit-mask-position:center;mask-position:center;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-size:contain;mask-size:contain}}:root :where(.wp-block-image.is-style-rounded img,.wp-block-image .is-style-rounded img){border-radius:9999px}.wp-block-image figure{margin:0}.wp-lightbox-container{display:flex;flex-direction:column;position:relative}.wp-lightbox-container img{cursor:zoom-in}.wp-lightbox-container img:hover+button{opacity:1}.wp-lightbox-container button{align-items:center;backdrop-filter:blur(16px) saturate(180%);background-color:rgba(90,90,90,.25);border:none;border-radius:4px;cursor:zoom-in;display:flex;height:20px;justify-content:center;opacity:0;padding:0;position:absolute;right:16px;text-align:center;top:16px;width:20px;z-index:100}@media not (prefers-reduced-motion){.wp-lightbox-container button{transition:opacity .2s ease}}.wp-lightbox-container button:focus-visible{outline:3px auto rgba(90,90,90,.25);outline:3px auto -webkit-focus-ring-color;outline-offset:3px}.wp-lightbox-container button:hover{cursor:pointer;opacity:1}.wp-lightbox-container button:focus{opacity:1}.wp-lightbox-container button:focus,.wp-lightbox-container button:hover,.wp-lightbox-container button:not(:hover):not(:active):not(.has-background){background-color:rgba(90,90,90,.25);border:none}.wp-lightbox-overlay{box-sizing:border-box;cursor:zoom-out;height:100vh;left:0;overflow:hidden;position:fixed;top:0;visibility:hidden;width:100%;z-index:100000}.wp-lightbox-overlay .wp-lightbox-close-button{align-items:center;cursor:pointer;display:flex;font-family:inherit;gap:8px;justify-content:center;line-height:1;min-height:40px;min-width:40px;padding:0 4px;position:absolute;right:calc(env(safe-area-inset-right) + 16px);top:calc(env(safe-area-inset-top) + 16px);z-index:5000000}.wp-lightbox-overlay .wp-lightbox-close-button:focus,.wp-lightbox-overlay .wp-lightbox-close-button:hover,.wp-lightbox-overlay .wp-lightbox-close-button:not(:hover):not(:active):not(.has-background){background:none;border:none}.wp-lightbox-overlay .wp-lightbox-close-button:has(.wp-lightbox-close-text:not([hidden])) .wp-lightbox-close-icon svg{height:1em;width:1em}.wp-lightbox-overlay .wp-lightbox-close-icon svg{display:block}.wp-lightbox-overlay .wp-lightbox-navigation-button-next,.wp-lightbox-overlay .wp-lightbox-navigation-button-prev{align-items:center;bottom:16px;cursor:pointer;display:flex;font-family:inherit;gap:4px;justify-content:center;line-height:1;min-height:40px;min-width:40px;padding:0 8px;position:absolute;z-index:2000002}.wp-lightbox-overlay .wp-lightbox-navigation-button-next[hidden],.wp-lightbox-overlay .wp-lightbox-navigation-button-prev[hidden]{display:none}@media (min-width:960px){.wp-lightbox-overlay .wp-lightbox-navigation-button-next,.wp-lightbox-overlay .wp-lightbox-navigation-button-prev{bottom:50%;transform:translateY(-50%)}}.wp-lightbox-overlay .wp-lightbox-navigation-button-next:focus,.wp-lightbox-overlay .wp-lightbox-navigation-button-next:hover,.wp-lightbox-overlay .wp-lightbox-navigation-button-next:not(:hover):not(:active):not(.has-background),.wp-lightbox-overlay .wp-lightbox-navigation-button-prev:focus,.wp-lightbox-overlay .wp-lightbox-navigation-button-prev:hover,.wp-lightbox-overlay .wp-lightbox-navigation-button-prev:not(:hover):not(:active):not(.has-background){background:none;border:none;padding:0 8px}.wp-lightbox-overlay .wp-lightbox-navigation-button-next:has(.wp-lightbox-navigation-text:not([hidden])) .wp-lightbox-navigation-icon svg,.wp-lightbox-overlay .wp-lightbox-navigation-button-prev:has(.wp-lightbox-navigation-text:not([hidden])) .wp-lightbox-navigation-icon svg{display:block;height:1.5em;width:1.5em}.wp-lightbox-overlay .wp-lightbox-navigation-button-prev{left:calc(env(safe-area-inset-left) + 16px)}.wp-lightbox-overlay .wp-lightbox-navigation-button-next{right:calc(env(safe-area-inset-right) + 16px)}.wp-lightbox-overlay .wp-lightbox-navigation-icon svg{vertical-align:middle}.wp-lightbox-overlay .lightbox-image-container{height:var(--wp--lightbox-container-height);left:50%;overflow:hidden;position:absolute;top:50%;transform:translate(-50%,-50%);transform-origin:top left;width:var(--wp--lightbox-container-width);z-index:2000001}.wp-lightbox-overlay .wp-block-image{align-items:center;box-sizing:border-box;display:flex;height:100%;justify-content:center;margin:0;position:relative;transform-origin:0 0;width:100%;z-index:3000000}.wp-lightbox-overlay .wp-block-image img{height:var(--wp--lightbox-image-height);min-height:var(--wp--lightbox-image-height);min-width:var(--wp--lightbox-image-width);width:var(--wp--lightbox-image-width)}.wp-lightbox-overlay .wp-block-image figcaption{display:none}.wp-lightbox-overlay button{background:none;border:none}.wp-lightbox-overlay .scrim{background-color:#fff;height:100%;opacity:.9;position:absolute;width:100%;z-index:2000000}.wp-lightbox-overlay.active{visibility:visible}@media not (prefers-reduced-motion){.wp-lightbox-overlay.active{animation:turn-on-visibility .25s both}.wp-lightbox-overlay.active img{animation:turn-on-visibility .35s both}.wp-lightbox-overlay.show-closing-animation:not(.active){animation:turn-off-visibility .35s both}.wp-lightbox-overlay.show-closing-animation:not(.active) img{animation:turn-off-visibility .25s both}.wp-lightbox-overlay.zoom.active{animation:none;opacity:1;visibility:visible}.wp-lightbox-overlay.zoom.active .lightbox-image-container{animation:lightbox-zoom-in .4s}.wp-lightbox-overlay.zoom.active .lightbox-image-container img{animation:none}.wp-lightbox-overlay.zoom.active .scrim{animation:turn-on-visibility .4s forwards}.wp-lightbox-overlay.zoom.show-closing-animation:not(.active){animation:none}.wp-lightbox-overlay.zoom.show-closing-animation:not(.active) .lightbox-image-container{animation:lightbox-zoom-out .4s}.wp-lightbox-overlay.zoom.show-closing-animation:not(.active) .lightbox-image-container img{animation:none}.wp-lightbox-overlay.zoom.show-closing-animation:not(.active) .scrim{animation:turn-off-visibility .4s forwards}}@keyframes show-content-image{0%{visibility:hidden}99%{visibility:hidden}to{visibility:visible}}@keyframes turn-on-visibility{0%{opacity:0}to{opacity:1}}@keyframes turn-off-visibility{0%{opacity:1;visibility:visible}99%{opacity:0;visibility:visible}to{opacity:0;visibility:hidden}}@keyframes lightbox-zoom-in{0%{transform:translate(calc((-100vw + var(--wp--lightbox-scrollbar-width))/2 + var(--wp--lightbox-initial-left-position)),calc(-50vh + var(--wp--lightbox-initial-top-position))) scale(var(--wp--lightbox-scale))}to{transform:translate(-50%,-50%) scale(1)}}@keyframes lightbox-zoom-out{0%{transform:translate(-50%,-50%) scale(1);visibility:visible}99%{visibility:visible}to{transform:translate(calc((-100vw + var(--wp--lightbox-scrollbar-width))/2 + var(--wp--lightbox-initial-left-position)),calc(-50vh + var(--wp--lightbox-initial-top-position))) scale(var(--wp--lightbox-scale));visibility:hidden}}</style>
+<style id="wp-block-paragraph-inline-css">.is-small-text{font-size:.875em}.is-regular-text{font-size:1em}.is-large-text{font-size:2.25em}.is-larger-text{font-size:3em}.has-drop-cap:not(:focus):first-letter{float:left;font-size:8.4em;font-style:normal;font-weight:100;line-height:.68;margin:.05em .1em 0 0;text-transform:uppercase}body.rtl .has-drop-cap:not(:focus):first-letter{float:none;margin-left:.1em}p.has-drop-cap.has-background{overflow:hidden}:root :where(p.has-background){padding:1.25em 2.375em}:where(p.has-text-color:not(.has-link-color)) a{color:inherit}p.has-text-align-left[style*="writing-mode:vertical-lr"],p.has-text-align-right[style*="writing-mode:vertical-rl"]{rotate:180deg}</style>
+<style id="wp-block-group-inline-css">.wp-block-group{box-sizing:border-box}:where(.wp-block-group.wp-block-group-is-layout-constrained){position:relative}</style>
+<style id="wp-block-separator-inline-css">.wp-block-separator{border:none;border-top:2px solid}:root :where(.wp-block-separator.is-style-dots){height:auto;line-height:1;text-align:center}:root :where(.wp-block-separator.is-style-dots):before{color:currentColor;content:"···";font-family:serif;font-size:1.5em;letter-spacing:2em;padding-left:2em}.wp-block-separator.is-style-dots{background:none!important;border:none!important}</style>
+
+
+<link rel='stylesheet' id='blockart-blocks-css' href='https://raspibackup.linux-tips-and-tricks.de/wp-content/plugins/blockart-blocks/dist/A.style-blocks.css,qver=02bebac99b3b2e2bbb71.pagespeed.cf.-gpaPIy1uV.css' media='all'/>
+
+<style id="global-styles-inline-css">:root{--wp--preset--aspect-ratio--square:1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black:#000;--wp--preset--color--cyan-bluish-gray:#abb8c3;--wp--preset--color--white:#fff;--wp--preset--color--pale-pink:#f78da7;--wp--preset--color--vivid-red:#cf2e2e;--wp--preset--color--luminous-vivid-orange:#ff6900;--wp--preset--color--luminous-vivid-amber:#fcb900;--wp--preset--color--light-green-cyan:#7bdcb5;--wp--preset--color--vivid-green-cyan:#00d084;--wp--preset--color--pale-cyan-blue:#8ed1fc;--wp--preset--color--vivid-cyan-blue:#0693e3;--wp--preset--color--vivid-purple:#9b51e0;--wp--preset--color--zakra-color-1:#027abb;--wp--preset--color--zakra-color-2:#015ea0;--wp--preset--color--zakra-color-3:#fff;--wp--preset--color--zakra-color-4:#f6fefc;--wp--preset--color--zakra-color-5:#181818;--wp--preset--color--zakra-color-6:#1f1f32;--wp--preset--color--zakra-color-7:#3f3f46;--wp--preset--color--zakra-color-8:#fff;--wp--preset--color--zakra-color-9:#e4e4e7;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple:linear-gradient(135deg,#0693e3 0%,#9b51e0 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan:linear-gradient(135deg,#7adcb4 0%,#00d082 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange:linear-gradient(135deg,#fcb900 0%,#ff6900 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red:linear-gradient(135deg,#ff6900 0%,#cf2e2e 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray:linear-gradient(135deg,#eee 0%,#a9b8c3 100%);--wp--preset--gradient--cool-to-warm-spectrum:linear-gradient(135deg,#4aeadc 0%,#9778d1 20%,#cf2aba 40%,#ee2c82 60%,#fb6962 80%,#fef84c 100%);--wp--preset--gradient--blush-light-purple:linear-gradient(135deg,#ffceec 0%,#9896f0 100%);--wp--preset--gradient--blush-bordeaux:linear-gradient(135deg,#fecda5 0%,#fe2d2d 50%,#6b003e 100%);--wp--preset--gradient--luminous-dusk:linear-gradient(135deg,#ffcb70 0%,#c751c0 50%,#4158d0 100%);--wp--preset--gradient--pale-ocean:linear-gradient(135deg,#fff5cb 0%,#b6e3d4 50%,#33a7b5 100%);--wp--preset--gradient--electric-grass:linear-gradient(135deg,#caf880 0%,#71ce7e 100%);--wp--preset--gradient--midnight:linear-gradient(135deg,#020381 0%,#2874fc 100%);--wp--preset--font-size--small:13px;--wp--preset--font-size--medium:20px;--wp--preset--font-size--large:36px;--wp--preset--font-size--x-large:42px;--wp--preset--spacing--20:.44rem;--wp--preset--spacing--30:.67rem;--wp--preset--spacing--40:1rem;--wp--preset--spacing--50:1.5rem;--wp--preset--spacing--60:2.25rem;--wp--preset--spacing--70:3.38rem;--wp--preset--spacing--80:5.06rem;--wp--preset--shadow--natural:6px 6px 9px rgba(0,0,0,.2);--wp--preset--shadow--deep:12px 12px 50px rgba(0,0,0,.4);--wp--preset--shadow--sharp:6px 6px 0 rgba(0,0,0,.2);--wp--preset--shadow--outlined:6px 6px 0 -3px #fff , 6px 6px #000;--wp--preset--shadow--crisp:6px 6px 0 #000}.wp-block-button{--wp--preset--dimension--25:25%;--wp--preset--dimension--50:50%;--wp--preset--dimension--75:75%;--wp--preset--dimension--100:100%}:root{--wp--style--global--content-size:760px;--wp--style--global--wide-size:1160px}:where(body) {margin:0}.wp-site-blocks>.alignleft{float:left;margin-right:2em}.wp-site-blocks>.alignright{float:right;margin-left:2em}.wp-site-blocks>.aligncenter{justify-content:center;margin-left:auto;margin-right:auto}:where(.wp-site-blocks) > * {margin-block-start:24px;margin-block-end:0}:where(.wp-site-blocks) > :first-child {margin-block-start:0}:where(.wp-site-blocks) > :last-child {margin-block-end:0}:root{--wp--style--block-gap:24px}:root :where(.is-layout-flow) > :first-child{margin-block-start:0}:root :where(.is-layout-flow) > :last-child{margin-block-end:0}:root :where(.is-layout-flow) > *{margin-block-start:24px;margin-block-end:0}:root :where(.is-layout-constrained) > :first-child{margin-block-start:0}:root :where(.is-layout-constrained) > :last-child{margin-block-end:0}:root :where(.is-layout-constrained) > *{margin-block-start:24px;margin-block-end:0}:root :where(.is-layout-flex){gap:24px}:root :where(.is-layout-grid){gap:24px}.is-layout-flow>.alignleft{float:left;margin-inline-start:0;margin-inline-end:2em}.is-layout-flow>.alignright{float:right;margin-inline-start:2em;margin-inline-end:0}.is-layout-flow>.aligncenter{margin-left:auto!important;margin-right:auto!important}.is-layout-constrained>.alignleft{float:left;margin-inline-start:0;margin-inline-end:2em}.is-layout-constrained>.alignright{float:right;margin-inline-start:2em;margin-inline-end:0}.is-layout-constrained>.aligncenter{margin-left:auto!important;margin-right:auto!important}.is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width:var(--wp--style--global--content-size);margin-left:auto!important;margin-right:auto!important}.is-layout-constrained>.alignwide{max-width:var(--wp--style--global--wide-size)}body .is-layout-flex{display:flex}.is-layout-flex{flex-wrap:wrap;align-items:center}.is-layout-flex > :is(*, div){margin:0}body .is-layout-grid{display:grid}.is-layout-grid > :is(*, div){margin:0}body{padding-top:0;padding-right:0;padding-bottom:0;padding-left:0}:root :where(.wp-element-button, .wp-block-button__link){background-color:#32373c;border-width:0;color:#fff;font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;line-height:inherit;padding-top: calc(0.667em + 2px);padding-right: calc(1.333em + 2px);padding-bottom: calc(0.667em + 2px);padding-left: calc(1.333em + 2px);text-decoration:none;text-transform:inherit}.has-black-color{color:var(--wp--preset--color--black)!important}.has-cyan-bluish-gray-color{color:var(--wp--preset--color--cyan-bluish-gray)!important}.has-white-color{color:var(--wp--preset--color--white)!important}.has-pale-pink-color{color:var(--wp--preset--color--pale-pink)!important}.has-vivid-red-color{color:var(--wp--preset--color--vivid-red)!important}.has-luminous-vivid-orange-color{color:var(--wp--preset--color--luminous-vivid-orange)!important}.has-luminous-vivid-amber-color{color:var(--wp--preset--color--luminous-vivid-amber)!important}.has-light-green-cyan-color{color:var(--wp--preset--color--light-green-cyan)!important}.has-vivid-green-cyan-color{color:var(--wp--preset--color--vivid-green-cyan)!important}.has-pale-cyan-blue-color{color:var(--wp--preset--color--pale-cyan-blue)!important}.has-vivid-cyan-blue-color{color:var(--wp--preset--color--vivid-cyan-blue)!important}.has-vivid-purple-color{color:var(--wp--preset--color--vivid-purple)!important}.has-zakra-color-1-color{color:var(--wp--preset--color--zakra-color-1)!important}.has-zakra-color-2-color{color:var(--wp--preset--color--zakra-color-2)!important}.has-zakra-color-3-color{color:var(--wp--preset--color--zakra-color-3)!important}.has-zakra-color-4-color{color:var(--wp--preset--color--zakra-color-4)!important}.has-zakra-color-5-color{color:var(--wp--preset--color--zakra-color-5)!important}.has-zakra-color-6-color{color:var(--wp--preset--color--zakra-color-6)!important}.has-zakra-color-7-color{color:var(--wp--preset--color--zakra-color-7)!important}.has-zakra-color-8-color{color:var(--wp--preset--color--zakra-color-8)!important}.has-zakra-color-9-color{color:var(--wp--preset--color--zakra-color-9)!important}.has-black-background-color{background-color:var(--wp--preset--color--black)!important}.has-cyan-bluish-gray-background-color{background-color:var(--wp--preset--color--cyan-bluish-gray)!important}.has-white-background-color{background-color:var(--wp--preset--color--white)!important}.has-pale-pink-background-color{background-color:var(--wp--preset--color--pale-pink)!important}.has-vivid-red-background-color{background-color:var(--wp--preset--color--vivid-red)!important}.has-luminous-vivid-orange-background-color{background-color:var(--wp--preset--color--luminous-vivid-orange)!important}.has-luminous-vivid-amber-background-color{background-color:var(--wp--preset--color--luminous-vivid-amber)!important}.has-light-green-cyan-background-color{background-color:var(--wp--preset--color--light-green-cyan)!important}.has-vivid-green-cyan-background-color{background-color:var(--wp--preset--color--vivid-green-cyan)!important}.has-pale-cyan-blue-background-color{background-color:var(--wp--preset--color--pale-cyan-blue)!important}.has-vivid-cyan-blue-background-color{background-color:var(--wp--preset--color--vivid-cyan-blue)!important}.has-vivid-purple-background-color{background-color:var(--wp--preset--color--vivid-purple)!important}.has-zakra-color-1-background-color{background-color:var(--wp--preset--color--zakra-color-1)!important}.has-zakra-color-2-background-color{background-color:var(--wp--preset--color--zakra-color-2)!important}.has-zakra-color-3-background-color{background-color:var(--wp--preset--color--zakra-color-3)!important}.has-zakra-color-4-background-color{background-color:var(--wp--preset--color--zakra-color-4)!important}.has-zakra-color-5-background-color{background-color:var(--wp--preset--color--zakra-color-5)!important}.has-zakra-color-6-background-color{background-color:var(--wp--preset--color--zakra-color-6)!important}.has-zakra-color-7-background-color{background-color:var(--wp--preset--color--zakra-color-7)!important}.has-zakra-color-8-background-color{background-color:var(--wp--preset--color--zakra-color-8)!important}.has-zakra-color-9-background-color{background-color:var(--wp--preset--color--zakra-color-9)!important}.has-black-border-color{border-color:var(--wp--preset--color--black)!important}.has-cyan-bluish-gray-border-color{border-color:var(--wp--preset--color--cyan-bluish-gray)!important}.has-white-border-color{border-color:var(--wp--preset--color--white)!important}.has-pale-pink-border-color{border-color:var(--wp--preset--color--pale-pink)!important}.has-vivid-red-border-color{border-color:var(--wp--preset--color--vivid-red)!important}.has-luminous-vivid-orange-border-color{border-color:var(--wp--preset--color--luminous-vivid-orange)!important}.has-luminous-vivid-amber-border-color{border-color:var(--wp--preset--color--luminous-vivid-amber)!important}.has-light-green-cyan-border-color{border-color:var(--wp--preset--color--light-green-cyan)!important}.has-vivid-green-cyan-border-color{border-color:var(--wp--preset--color--vivid-green-cyan)!important}.has-pale-cyan-blue-border-color{border-color:var(--wp--preset--color--pale-cyan-blue)!important}.has-vivid-cyan-blue-border-color{border-color:var(--wp--preset--color--vivid-cyan-blue)!important}.has-vivid-purple-border-color{border-color:var(--wp--preset--color--vivid-purple)!important}.has-zakra-color-1-border-color{border-color:var(--wp--preset--color--zakra-color-1)!important}.has-zakra-color-2-border-color{border-color:var(--wp--preset--color--zakra-color-2)!important}.has-zakra-color-3-border-color{border-color:var(--wp--preset--color--zakra-color-3)!important}.has-zakra-color-4-border-color{border-color:var(--wp--preset--color--zakra-color-4)!important}.has-zakra-color-5-border-color{border-color:var(--wp--preset--color--zakra-color-5)!important}.has-zakra-color-6-border-color{border-color:var(--wp--preset--color--zakra-color-6)!important}.has-zakra-color-7-border-color{border-color:var(--wp--preset--color--zakra-color-7)!important}.has-zakra-color-8-border-color{border-color:var(--wp--preset--color--zakra-color-8)!important}.has-zakra-color-9-border-color{border-color:var(--wp--preset--color--zakra-color-9)!important}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background:var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple)!important}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background:var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan)!important}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background:var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange)!important}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background:var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red)!important}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background:var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray)!important}.has-cool-to-warm-spectrum-gradient-background{background:var(--wp--preset--gradient--cool-to-warm-spectrum)!important}.has-blush-light-purple-gradient-background{background:var(--wp--preset--gradient--blush-light-purple)!important}.has-blush-bordeaux-gradient-background{background:var(--wp--preset--gradient--blush-bordeaux)!important}.has-luminous-dusk-gradient-background{background:var(--wp--preset--gradient--luminous-dusk)!important}.has-pale-ocean-gradient-background{background:var(--wp--preset--gradient--pale-ocean)!important}.has-electric-grass-gradient-background{background:var(--wp--preset--gradient--electric-grass)!important}.has-midnight-gradient-background{background:var(--wp--preset--gradient--midnight)!important}.has-small-font-size{font-size:var(--wp--preset--font-size--small)!important}.has-medium-font-size{font-size:var(--wp--preset--font-size--medium)!important}.has-large-font-size{font-size:var(--wp--preset--font-size--large)!important}.has-x-large-font-size{font-size:var(--wp--preset--font-size--x-large)!important}</style>
+
+<style id="blockart-global-styles-inline-css">:root{--ba-colors-primary:#2563eb;--ba-colors-secondary:#54595f;--ba-colors-text:#7a7a7a;--ba-colors-accent:#61ce70;--ba-font-weights-primary:600;--ba-font-weights-secondary:400;--ba-font-weights-text:600;--ba-font-weights-accent:500}.ba-typography-primary{font-weight:var(--ba-font-weights-primary)!important}.ba-typography-secondary{font-weight:var(--ba-font-weights-secondary)!important}.ba-typography-text{font-weight:var(--ba-font-weights-text)!important}.ba-typography-accent{font-weight:var(--ba-font-weights-accent)!important}</style>
+<link rel='stylesheet' id='ee-simple-file-list-css-css' href='https://raspibackup.linux-tips-and-tricks.de/wp-content/plugins/simple-file-list/css/A.styles.css,qver=6.1.9.pagespeed.cf.esNj_0PKPX.css' media='all'/>
+<link rel='stylesheet' id='wsm-style-css' href='https://raspibackup.linux-tips-and-tricks.de/wp-content/plugins/wp-stats-manager/css/A.style.css,qver=1.2.pagespeed.cf.AlOX-4S3I2.css' media='all'/>
+<link rel='stylesheet' id='font-awesome-all-css' href='https://raspibackup.linux-tips-and-tricks.de/wp-content/themes/zakra/inc/customizer/customind/assets/fontawesome/v6/css/A.all.min.css,qver=6.2.4.pagespeed.cf.-p2ni_ruqC.css' media='all'/>
+<link rel='stylesheet' id='zakra_google_fonts-css' href='https://fonts.googleapis.com/css?family=Raleway:0|-apple-system,+blinkmacsystemfont,+segoe+ui,+roboto,+oxygen-sans,+ubuntu,+cantarell,+helvetica+neue,+helvetica,+arial,+sans-serif:400|Lora:700,500,0&#038;ver=4.3.3' media='all'/>
+<link rel='stylesheet' id='zakra-style-css' href='https://raspibackup.linux-tips-and-tricks.de/wp-content/themes/zakra/A.style.css,qver=4.3.3.pagespeed.cf.j-SGLNWuaE.css' media='all'/>
+<style id="zakra-style-inline-css">.zak-header-builder .zak-header-top-row{background-color:#18181b}.zak-header-builder .zak-main-nav{border-bottom-color:#e9ecef}.zak-header-builder .zak-secondary-nav{border-bottom-color:#e9ecef}.zak-header-builder .zak-tertiary-menu{border-bottom-color:#e9ecef}.zak-header-builder .zak-header-buttons .zak-header-button .zak-button{color:#fff}.zak-header-builder .zak-header-buttons .zak-header-button .zak-button:hover{color:#fff}.zak-header-builder .zak-header-buttons .zak-header-button .zak-button{background-color:#06965c}.zak-header-builder .zak-header-buttons .zak-header-button .zak-button:hover{background-color:#006d3e}.zak-header-builder .zak-header-buttons .zak-header-button .zak-button{padding-top:8px;padding-right:25px;padding-bottom:8px;padding-left:25px}.zak-header-builder .zak-header-buttons .zak-header-button .zak-button{border-radius:4px}.zak-footer-builder .zak-footer-bottom-row{background-color:#18181b}.zak-footer-builder .zak-footer-bottom-row{border-color:#3f3f46}.zak-footer-builder .zak-footer-bottom-row{color:#fafafa}.zak-header-builder,.zak-header-sticky-wrapper .sticky-header{border-color:#e4e4e7}.zak-footer-builder .zak-footer-main-row ul li{border-bottom-color:#e9ecef}:root{--top-grid-columns:4;--main-grid-columns:4;--bottom-grid-columns:1}.zak-footer-builder .zak-bottom-row{justify-items:center}.zak-footer-builder .zak-footer-bottom-row .zak-footer-col{flex-direction:column}.zak-footer-builder .zak-footer-main-row .zak-footer-col{flex-direction:column}.zak-footer-builder .zak-footer-top-row .zak-footer-col{flex-direction:column}.zak-footer-builder .zak-copyright{text-align:center}.zak-footer-builder .zak-footer-nav{display:flex;justify-content:center}.zak-footer-builder .zak-footer-nav-2{display:flex;justify-content:center}.zak-footer-builder .zak-html-1{text-align:center}.zak-footer-builder .zak-html-2{text-align:center}.zak-footer-builder .footer-social-icons{text-align:left}:root{--zakra-color-1:#027abb;--zakra-color-2:#015ea0;--zakra-color-3:#fff;--zakra-color-4:#f6fefc;--zakra-color-5:#181818;--zakra-color-6:#1f1f32;--zakra-color-7:#3f3f46;--zakra-color-8:#fff;--zakra-color-9:#e4e4e7}@media screen and (min-width:992px){.zak-primary{width:70%}}a:hover,a:focus,.zak-primary-nav ul li:hover>a,.zak-primary-nav ul .current_page_item>a,.zak-entry-summary a,.zak-entry-meta a,.zak-post-content .zak-entry-footer a:hover,.pagebuilder-content a,.zak-style-2 .zak-entry-meta span,.zak-style-2 .zak-entry-meta a,.entry-title:hover a,.entry-content a,.edit-link a,.zak-footer-bar a:hover,.widget li a,#comments .comment-content a,#comments .reply,button:hover,.zak-button:hover,.zak-entry-footer .edit-link a,.zak-header-action .yith-wcwl-items-count .yith-wcwl-icon span,.pagebuilder-content a,.zak-entry-footer a,.zak-header-buttons .zak-header-button--2 .zak-button,.zak-header-buttons .zak-header-button .zak-button:hover,.woocommerce-cart .coupon button.button{color:#06965c}.zak-post-content .entry-button:hover .zak-icon,.zak-error-404 .zak-button:hover svg,.zak-style-2 .zak-entry-meta span .zak-icon,.entry-button .zak-icon{fill:#06965c}blockquote,.wp-block-quote,button,input[type="button"],input[type="reset"],input[type="submit"],.wp-block-button .wp-block-button__link,blockquote.has-text-align-right,.wp-block-quote.has-text-align-right,button:hover,.wp-block-button .wp-block-button__link:hover,.zak-button:hover,.zak-header-buttons .zak-header-button .zak-button,.zak-header-buttons .zak-header-button.zak-header-button--2 .zak-button,.zak-header-buttons .zak-header-button .zak-button:hover,.woocommerce-cart .coupon button.button,.woocommerce-cart .actions>button.button{border-color:#06965c}.zak-primary-nav.zak-layout-1-style-2>ul>li.current_page_item>a::before,.zak-primary-nav.zak-layout-1-style-2>ul a:hover::before,.zak-primary-nav.zak-layout-1-style-2>ul>li.current-menu-item>a::before,.zak-primary-nav.zak-layout-1-style-3>ul>li.current_page_item>a::before,.zak-primary-nav.zak-layout-1-style-3>ul>li.current-menu-item>a::before,.zak-primary-nav.zak-layout-1-style-4>ul>li.current_page_item>a::before,.zak-primary-nav.zak-layout-1-style-4>ul>li.current-menu-item>a::before,.zak-scroll-to-top:hover,button,input[type="button"],input[type="reset"],input[type="submit"],.zak-header-buttons .zak-header-button--1 .zak-button,.wp-block-button .wp-block-button__link,.zak-menu-item-cart .cart-page-link .count,.widget .wp-block-heading::before,#comments .comments-title::before,#comments .comment-reply-title::before,.widget .widget-title::before,.zak-footer-builder .zak-footer-main-row .widget .wp-block-heading::before,.zak-footer-builder .zak-footer-top-row .widget .wp-block-heading::before,.zak-footer-builder .zak-footer-bottom-row .widget .wp-block-heading::before,.zak-footer-builder .zak-footer-main-row .widget .widget-title::before,.zak-footer-builder .zak-footer-top-row .widget .widget-title::before,.zak-footer-builder .zak-footer-bottom-row .widget .widget-title::before,.woocommerce-cart .actions .coupon button.button:hover,.woocommerce-cart .actions>button.button,.woocommerce-cart .actions>button.button:hover{background-color:#06965c}button,input[type="button"],input[type="reset"],input[type="submit"],.wp-block-button .wp-block-button__link,.zak-button{border-color:#06965c;background-color:#06965c}body,.woocommerce-ordering select{color:#3f3f46}.zak-header,.zak-post,.zak-secondary,.zak-footer-bar,.zak-primary-nav .sub-menu,.zak-primary-nav .sub-menu li,.posts-navigation,#comments,.post-navigation,blockquote,.wp-block-quote,.zak-posts .zak-post,.zak-content-area--boxed .widget{border-color:#e4e4e7}hr .zak-container--separate, {background-color:#e4e4e7}.entry-content a{color:#23ab70}.zak-entry-footer a:hover,.entry-button:hover,.zak-entry-footer a:hover,.entry-content a:hover,.pagebuilder-content a:hover,.pagebuilder-content a:hover{color:#06965c}.entry-button:hover .zak-icon{fill:#06965c}.zak-content{background-color:#d6d6d6;background-size:contain;background-repeat:repeat-y}body{font-family:Raleway;font-weight:400;font-size:16px;line-height:1.8}h1,h2,h3,h4,h5,h6{font-family:-apple-system,blinkmacsystemfont,segoe\ ui,roboto,oxygen-sans,ubuntu,cantarell,helvetica\ neue,helvetica,arial,sans-serif;font-weight:400;line-height:1.3}h1{font-family:Lora;font-weight:500;font-size:3.6rem;line-height:1.3}h2{font-family:Lora;font-weight:400;font-size:16px;line-height:1.3}h6{font-family:Lora;font-weight:700;font-size:23px;line-height:1.3}button,input[type="button"],input[type="reset"],input[type="submit"],#infinite-handle span,.wp-block-button .wp-block-button__link{background-color:#06965c}.zak-button:not(.zak-header-buttons .zak-button){background-color:#06965c}button:hover,input[type="button"]:hover,input[type="reset"]:hover,input[type="submit"]:hover,#infinite-handle span:hover,.wp-block-button .wp-block-button__link:hover{background-color:#00723e}.zak-button:hover:not(.zak-header-buttons .zak-button){background-color:#00723e}.site-title{color:#blank}.zak-header .zak-top-bar{background-size:contain}.zak-header .zak-main-header{background-color:#fff;background-position:left top;background-size:cover;background-repeat:no-repeat}.zak-header-buttons .zak-header-button.zak-header-button--1 .zak-button{padding-top:8px;padding-right:25px;padding-bottom:8px;padding-left:25px}.zak-header-buttons .zak-header-button.zak-header-button--1 .zak-button{color:#fff}.zak-header-buttons .zak-header-button.zak-header-button--1 .zak-button:hover{color:#fff}.zak-header-buttons .zak-header-button.zak-header-button--1 .zak-button{background-color:#06965c}.zak-header-buttons .zak-header-button.zak-header-button--1 .zak-button:hover{background-color:#006d3e}.zak-header-buttons .zak-header-button.zak-header-button--1 .zak-button{border-radius:4px}.zak-header .main-navigation{border-bottom-color:#e9ecef}.has-page-header .zak-page-header{padding-top:210px;padding-bottom:210px}.zak-page-header .zak-page-title,.zakra-single-article .zak-entry-header .entry-title{color:#fff}.zak-page-header,.zak-container--separate .zak-page-header{background-color:#fff;background-position:center center;background-size:cover;background-attachment:fixed;background-repeat:no-repeat}.zak-page-header .breadcrumb-trail ul li{color:#fff}.zak-page-header .breadcrumb-trail ul li::after{color:#fff}.zak-page-header .breadcrumb-trail ul li a{color:#fff}.zak-page-header .breadcrumb-trail ul li a:hover{color:#027abb}.entry-title:not(.zak-page-title){font-family:Lora;font-weight:700;font-size:24px;line-height:36px}.zak-secondary .widget .widget-title,.zak-secondary .widget .wp-block-heading{font-family:Lora;font-weight:700;font-size:23px;line-height:34px}.zak-footer-cols{background-color:#fff}.zak-footer .zak-footer-cols,.zak-footer .zak-footer-cols p{color:#d4d4d8}.zak-footer-cols{border-top-color:#e9ecef}.zak-footer-cols ul li{border-bottom-color:#e9ecef}.zak-footer-bar{color:#fafafa}.zak-footer-bar{border-top-color:#3f3f46}.zak-scroll-to-top:hover{background-color:#1e7ba6}:root{--e-global-color-zakracolor1:#027abb;--e-global-color-zakracolor2:#015ea0;--e-global-color-zakracolor3:#fff;--e-global-color-zakracolor4:#f6fefc;--e-global-color-zakracolor5:#181818;--e-global-color-zakracolor6:#1f1f32;--e-global-color-zakracolor7:#3f3f46;--e-global-color-zakracolor8:#fff;--e-global-color-zakracolor9:#e4e4e7}.main-navigation.zak-primary-nav>ul>li:hover>a{color:#000}.main-navigation.zak-primary-nav>ul li:active>a,.main-navigation.zak-primary-nav>ul>li.current_page_item>a,.main-navigation.zak-primary-nav>ul>li.current-menu-item>a{color:#23ab70}.main-navigation.zak-primary-nav.zak-layout-1-style-2>ul>li.current_page_item>a::before,.main-navigation.zak-primary-nav.zak-layout-1-style-2>ul>li.current-menu-item>a::before,.main-navigation.zak-primary-nav.zak-layout-1-style-3>ul>li.current_page_item>a::before,.main-navigation.zak-primary-nav.zak-layout-1-style-3>ul>li.current-menu-item>a::before,.main-navigation.zak-primary-nav.zak-layout-1-style-4>ul>li.current_page_item>a::before,.main-navigation.zak-primary-nav.zak-layout-1-style-4>ul>li.current-menu-item>a::before{background-color:#23ab70}</style>
+<style id="blockart-blocks-css-widgets-inline-css">.blockart-heading.blockart-heading-6c620252>.blockart-highlight{background-color:#007cba;color:#fff}.blockart-heading.blockart-heading-6c620252{margin:0;font-family:Lora;font-weight:700;font-size:25px;line-height:38px;width:100%}.blockart-paragraph.blockart-paragraph-a64a7383{font-family:Raleway;font-weight:400}.blockart-image-c9b1b166{text-align:left;margin-left:0;margin-right:0}.blockart-image-c9b1b166 img{opacity:1;object-fit:fill}</style>
+<link rel='stylesheet' id='blockart-blocks-fonts-1079-css' href='https://fonts.googleapis.com/css?family=Work+Sans%3A500%2C600%2C400%7CRaleway%3A400%7CLora%3A700&#038;display=swap&#038;ver=2.4.3' media='all'/>
+<style id="blockart-blocks-css-1079-inline-css">.blockart-heading-054bc2ca{padding:0 0 0 10px}.blockart-heading.blockart-heading-054bc2ca{margin:0 0 10px 0;font-family:Work\ Sans;font-weight:500;font-size:31px;width:100%;text-align:center}.blockart-paragraph.blockart-paragraph-6c5aca85,.blockart-paragraph.blockart-paragraph-92585ed9,.blockart-paragraph.blockart-paragraph-cb2d739f,.blockart-paragraph.blockart-paragraph-1d7b3c3a,.blockart-paragraph.blockart-paragraph-53b31c65,.blockart-paragraph.blockart-paragraph-dca2cdd0,.blockart-paragraph.blockart-paragraph-0b431e36,.blockart-paragraph.blockart-paragraph-8990e63c,.blockart-paragraph.blockart-paragraph-d92c7961,.blockart-paragraph.blockart-paragraph-e673cbd3,.blockart-paragraph.blockart-paragraph-d95145a8,.blockart-paragraph.blockart-paragraph-792adf9b,.blockart-paragraph.blockart-paragraph-0f7e8832,.blockart-paragraph.blockart-paragraph-ebdedc86,.blockart-paragraph.blockart-paragraph-20c9eef9,.blockart-paragraph.blockart-paragraph-4a3f0b2f,.blockart-paragraph.blockart-paragraph-3dcf1498,.blockart-paragraph.blockart-paragraph-137bcc6f,.blockart-paragraph.blockart-paragraph-6fd7f144,.blockart-paragraph.blockart-paragraph-b2a4aeeb,.blockart-paragraph.blockart-paragraph-19cfa439,.blockart-paragraph.blockart-paragraph-99d0f4ff{font-family:Work\ Sans;font-weight:400;font-size:16px;text-align:left}.blockart-heading.blockart-heading-c9977b5f,.blockart-heading.blockart-heading-216df6f0,.blockart-heading.blockart-heading-758ae618,.blockart-heading.blockart-heading-7d2ae7c2,.blockart-heading.blockart-heading-143dbc94,.blockart-heading.blockart-heading-ff165078,.blockart-heading.blockart-heading-1f30a2ab,.blockart-heading.blockart-heading-f5178daa,.blockart-heading.blockart-heading-b1708ae7,.blockart-heading.blockart-heading-e06f8a40,.blockart-heading.blockart-heading-2897cebb,.blockart-heading.blockart-heading-3263355a,.blockart-heading.blockart-heading-e1ea12b5,.blockart-heading.blockart-heading-df0071d9,.blockart-heading.blockart-heading-8f779ab1,.blockart-heading.blockart-heading-6eeca50c,.blockart-heading.blockart-heading-8d0e2110,.blockart-heading.blockart-heading-e0e3e020,.blockart-heading.blockart-heading-1ec48dc3,.blockart-heading.blockart-heading-d56f5ad4{margin:10px 0 20px 0;font-family:Work\ Sans;font-weight:600;font-size:20px;width:100%;text-align:left}.blockart-image-781237b3,.blockart-image-fefd401f,.blockart-image-36e68a88,.blockart-image-34989af5,.blockart-image-96763e6b,.blockart-image-c43eba04,.blockart-image-fc5a7c46,.blockart-image-c3d326e8,.blockart-image-05532d00,.blockart-image-f278967e,.blockart-image-720ddc41,.blockart-image-d9f1ce82,.blockart-image-e67c2c57,.blockart-image-3a64e075,.blockart-image-d9ceae66,.blockart-image-58c718d0,.blockart-image-2d870bf5,.blockart-image-781e9769,.blockart-image-87ee6d25,.blockart-image-47f83b6c{text-align:left;margin-left:0;margin-right:0;margin:-50px 0 0 0}.blockart-image-781237b3 img,.blockart-image-fefd401f img,.blockart-image-36e68a88 img,.blockart-image-34989af5 img,.blockart-image-96763e6b img,.blockart-image-c43eba04 img,.blockart-image-fc5a7c46 img,.blockart-image-c3d326e8 img,.blockart-image-05532d00 img,.blockart-image-f278967e img,.blockart-image-720ddc41 img,.blockart-image-d9f1ce82 img,.blockart-image-e67c2c57 img,.blockart-image-3a64e075 img,.blockart-image-d9ceae66 img,.blockart-image-58c718d0 img,.blockart-image-2d870bf5 img,.blockart-image-781e9769 img,.blockart-image-87ee6d25 img,.blockart-image-47f83b6c img{opacity:1;object-fit:fill}.blockart-column-2a7b3b30>.blockart-column-inner,.blockart-column-56c879c5>.blockart-column-inner,.blockart-column-5c1263a0>.blockart-column-inner,.blockart-column-4e2b7566>.blockart-column-inner,.blockart-column-ce518c3f>.blockart-column-inner,.blockart-column-f5ab0cc8>.blockart-column-inner,.blockart-column-72923435>.blockart-column-inner,.blockart-column-78108fb7>.blockart-column-inner,.blockart-column-1897da14>.blockart-column-inner,.blockart-column-69c63e12>.blockart-column-inner,.blockart-column-ba24aeb9>.blockart-column-inner,.blockart-column-e25d3509>.blockart-column-inner,.blockart-column-d376ea15>.blockart-column-inner,.blockart-column-bf5f94e8>.blockart-column-inner,.blockart-column-d33b9b5f>.blockart-column-inner,.blockart-column-3c455d74>.blockart-column-inner,.blockart-column-e3d76d6a>.blockart-column-inner,.blockart-column-0bad4f43>.blockart-column-inner,.blockart-column-78b673b0>.blockart-column-inner,.blockart-column-f4525c2c>.blockart-column-inner{padding:20px;border-style:solid;border-color:rgba(7,54,116,.1);border-width:1px;border-radius:16px;background-color:#ececec}.blockart-column-2a7b3b30,.blockart-column-56c879c5,.blockart-column-5c1263a0,.blockart-column-4e2b7566,.blockart-column-ce518c3f,.blockart-column-f5ab0cc8,.blockart-column-72923435,.blockart-column-78108fb7,.blockart-column-1897da14,.blockart-column-69c63e12,.blockart-column-ba24aeb9,.blockart-column-e25d3509,.blockart-column-d376ea15,.blockart-column-bf5f94e8,.blockart-column-d33b9b5f,.blockart-column-3c455d74,.blockart-column-e3d76d6a,.blockart-column-0bad4f43,.blockart-column-78b673b0,.blockart-column-f4525c2c{margin:60px 0 0 0;width:100%}.blockart-column-2a7b3b30:hover>.blockart-column-inner,.blockart-column-56c879c5:hover>.blockart-column-inner,.blockart-column-5c1263a0:hover>.blockart-column-inner,.blockart-column-4e2b7566:hover>.blockart-column-inner,.blockart-column-ce518c3f:hover>.blockart-column-inner,.blockart-column-f5ab0cc8:hover>.blockart-column-inner,.blockart-column-72923435:hover>.blockart-column-inner,.blockart-column-78108fb7:hover>.blockart-column-inner,.blockart-column-1897da14:hover>.blockart-column-inner,.blockart-column-69c63e12:hover>.blockart-column-inner,.blockart-column-ba24aeb9:hover>.blockart-column-inner,.blockart-column-e25d3509:hover>.blockart-column-inner,.blockart-column-d376ea15:hover>.blockart-column-inner,.blockart-column-bf5f94e8:hover>.blockart-column-inner,.blockart-column-d33b9b5f:hover>.blockart-column-inner,.blockart-column-3c455d74:hover>.blockart-column-inner,.blockart-column-e3d76d6a:hover>.blockart-column-inner,.blockart-column-0bad4f43:hover>.blockart-column-inner,.blockart-column-78b673b0:hover>.blockart-column-inner,.blockart-column-f4525c2c:hover>.blockart-column-inner{box-shadow:15px 15px 30px 0 rgba(7,54,116,.1);border-style:solid;border-color:#073673;border-width:1px}.blockart-heading.blockart-heading-40497183,.blockart-heading.blockart-heading-476c2968{margin:0 0 16px 0;font-family:Work\ Sans;font-weight:500;font-size:42px;width:100%;text-align:center}.blockart-section-1ff356ca,.blockart-section-acee1aec{padding:100px 0 0 0}.blockart-section-1ff356ca.blockart-section,.blockart-section-b92f919b.blockart-section,.blockart-section-4f2d0220.blockart-section,.blockart-section-6afe2f69.blockart-section,.blockart-section-b8d2bdc6.blockart-section,.blockart-section-0b79a2b9.blockart-section,.blockart-section-8a29eb1a.blockart-section,.blockart-section-a2ec25ad.blockart-section,.blockart-section-dfb178e1.blockart-section,.blockart-section-3fe1385a.blockart-section,.blockart-section-2f8e8161.blockart-section,.blockart-section-3046ace8.blockart-section,.blockart-section-4854446c.blockart-section,.blockart-section-46d290a6.blockart-section,.blockart-section-a75cf16e.blockart-section,.blockart-section-7432dbda.blockart-section,.blockart-section-a6bd4d42.blockart-section,.blockart-section-d0565662.blockart-section,.blockart-section-19242202.blockart-section,.blockart-section-acee1aec.blockart-section{background-color:rgba(0,0,0,0)}.blockart-heading.blockart-heading-09370480{width:100%;text-align:center}.blockart-heading.blockart-heading-ff888417>.blockart-highlight,.blockart-heading.blockart-heading-09370480>.blockart-highlight,.blockart-heading.blockart-heading-40497183>.blockart-highlight,.blockart-heading.blockart-heading-c9977b5f>.blockart-highlight,.blockart-heading.blockart-heading-216df6f0>.blockart-highlight,.blockart-heading.blockart-heading-758ae618>.blockart-highlight,.blockart-heading.blockart-heading-7d2ae7c2>.blockart-highlight,.blockart-heading.blockart-heading-143dbc94>.blockart-highlight,.blockart-heading.blockart-heading-ff165078>.blockart-highlight,.blockart-heading.blockart-heading-1f30a2ab>.blockart-highlight,.blockart-heading.blockart-heading-f5178daa>.blockart-highlight,.blockart-heading.blockart-heading-b1708ae7>.blockart-highlight,.blockart-heading.blockart-heading-e06f8a40>.blockart-highlight,.blockart-heading.blockart-heading-2897cebb>.blockart-highlight,.blockart-heading.blockart-heading-3263355a>.blockart-highlight,.blockart-heading.blockart-heading-e1ea12b5>.blockart-highlight,.blockart-heading.blockart-heading-df0071d9>.blockart-highlight,.blockart-heading.blockart-heading-8f779ab1>.blockart-highlight,.blockart-heading.blockart-heading-6eeca50c>.blockart-highlight,.blockart-heading.blockart-heading-8d0e2110>.blockart-highlight,.blockart-heading.blockart-heading-e0e3e020>.blockart-highlight,.blockart-heading.blockart-heading-1ec48dc3>.blockart-highlight,.blockart-heading.blockart-heading-d56f5ad4>.blockart-highlight,.blockart-heading.blockart-heading-476c2968>.blockart-highlight,.blockart-heading.blockart-heading-054bc2ca>.blockart-highlight{background-color:#007cba;color:#fff}.blockart-heading.blockart-heading-ff888417{font-weight:500;font-size:46px;width:100%;text-align:center}.blockart-column-17c7e230>.blockart-overlay,.blockart-column-d05364ca>.blockart-overlay,.blockart-column-2a7b3b30>.blockart-overlay,.blockart-column-56c879c5>.blockart-overlay,.blockart-column-5c1263a0>.blockart-overlay,.blockart-column-4e2b7566>.blockart-overlay,.blockart-column-ce518c3f>.blockart-overlay,.blockart-column-f5ab0cc8>.blockart-overlay,.blockart-column-72923435>.blockart-overlay,.blockart-column-78108fb7>.blockart-overlay,.blockart-column-1897da14>.blockart-overlay,.blockart-column-69c63e12>.blockart-overlay,.blockart-column-ba24aeb9>.blockart-overlay,.blockart-column-e25d3509>.blockart-overlay,.blockart-column-d376ea15>.blockart-overlay,.blockart-column-bf5f94e8>.blockart-overlay,.blockart-column-d33b9b5f>.blockart-overlay,.blockart-column-3c455d74>.blockart-overlay,.blockart-column-e3d76d6a>.blockart-overlay,.blockart-column-0bad4f43>.blockart-overlay,.blockart-column-78b673b0>.blockart-overlay,.blockart-column-f4525c2c>.blockart-overlay,.blockart-column-5af33076>.blockart-overlay{background-color:rgba(37,99,235,.3);opacity:1}.blockart-column-17c7e230,.blockart-column-d05364ca,.blockart-column-5af33076{width:100%}.blockart-column-17c7e230 .blockart-column-inner,.blockart-column-d05364ca .blockart-column-inner,.blockart-column-2a7b3b30 .blockart-column-inner,.blockart-column-56c879c5 .blockart-column-inner,.blockart-column-5c1263a0 .blockart-column-inner,.blockart-column-4e2b7566 .blockart-column-inner,.blockart-column-ce518c3f .blockart-column-inner,.blockart-column-f5ab0cc8 .blockart-column-inner,.blockart-column-72923435 .blockart-column-inner,.blockart-column-78108fb7 .blockart-column-inner,.blockart-column-1897da14 .blockart-column-inner,.blockart-column-69c63e12 .blockart-column-inner,.blockart-column-ba24aeb9 .blockart-column-inner,.blockart-column-e25d3509 .blockart-column-inner,.blockart-column-d376ea15 .blockart-column-inner,.blockart-column-bf5f94e8 .blockart-column-inner,.blockart-column-d33b9b5f .blockart-column-inner,.blockart-column-3c455d74 .blockart-column-inner,.blockart-column-e3d76d6a .blockart-column-inner,.blockart-column-0bad4f43 .blockart-column-inner,.blockart-column-78b673b0 .blockart-column-inner,.blockart-column-f4525c2c .blockart-column-inner,.blockart-column-5af33076 .blockart-column-inner{column-gap:8px;row-gap:8px}.blockart-section-ff770b38,.blockart-section-b92f919b,.blockart-section-4f2d0220,.blockart-section-6afe2f69,.blockart-section-b8d2bdc6,.blockart-section-0b79a2b9,.blockart-section-8a29eb1a,.blockart-section-a2ec25ad,.blockart-section-dfb178e1,.blockart-section-7be6afd7,.blockart-section-b68653e5,.blockart-section-3fe1385a,.blockart-section-2f8e8161,.blockart-section-3046ace8,.blockart-section-4854446c,.blockart-section-46d290a6,.blockart-section-a75cf16e,.blockart-section-7432dbda,.blockart-section-a6bd4d42,.blockart-section-d0565662,.blockart-section-19242202{padding:0 15px}.blockart-section-ff770b38>[class*="blockart-container"]>.blockart-section-inner,.blockart-section-1ff356ca>[class*="blockart-container"]>.blockart-section-inner,.blockart-section-b92f919b>[class*="blockart-container"]>.blockart-section-inner,.blockart-section-4f2d0220>[class*="blockart-container"]>.blockart-section-inner,.blockart-section-6afe2f69>[class*="blockart-container"]>.blockart-section-inner,.blockart-section-b8d2bdc6>[class*="blockart-container"]>.blockart-section-inner,.blockart-section-0b79a2b9>[class*="blockart-container"]>.blockart-section-inner,.blockart-section-8a29eb1a>[class*="blockart-container"]>.blockart-section-inner,.blockart-section-a2ec25ad>[class*="blockart-container"]>.blockart-section-inner,.blockart-section-dfb178e1>[class*="blockart-container"]>.blockart-section-inner,.blockart-section-7be6afd7>[class*="blockart-container"]>.blockart-section-inner,.blockart-section-b68653e5>[class*="blockart-container"]>.blockart-section-inner,.blockart-section-3fe1385a>[class*="blockart-container"]>.blockart-section-inner,.blockart-section-2f8e8161>[class*="blockart-container"]>.blockart-section-inner,.blockart-section-3046ace8>[class*="blockart-container"]>.blockart-section-inner,.blockart-section-4854446c>[class*="blockart-container"]>.blockart-section-inner,.blockart-section-46d290a6>[class*="blockart-container"]>.blockart-section-inner,.blockart-section-a75cf16e>[class*="blockart-container"]>.blockart-section-inner,.blockart-section-7432dbda>[class*="blockart-container"]>.blockart-section-inner,.blockart-section-a6bd4d42>[class*="blockart-container"]>.blockart-section-inner,.blockart-section-d0565662>[class*="blockart-container"]>.blockart-section-inner,.blockart-section-19242202>[class*="blockart-container"]>.blockart-section-inner,.blockart-section-acee1aec>[class*="blockart-container"]>.blockart-section-inner{row-gap:30px;--colspacing:30px;margin-inline-start:calc(var(--colSpacing) * -1);align-items:;justify-content:}.blockart-section-ff770b38>.blockart-container,.blockart-section-1ff356ca>.blockart-container,.blockart-section-b92f919b>.blockart-container,.blockart-section-4f2d0220>.blockart-container,.blockart-section-6afe2f69>.blockart-container,.blockart-section-b8d2bdc6>.blockart-container,.blockart-section-0b79a2b9>.blockart-container,.blockart-section-8a29eb1a>.blockart-container,.blockart-section-a2ec25ad>.blockart-container,.blockart-section-dfb178e1>.blockart-container,.blockart-section-7be6afd7>.blockart-container,.blockart-section-b68653e5>.blockart-container,.blockart-section-3fe1385a>.blockart-container,.blockart-section-2f8e8161>.blockart-container,.blockart-section-3046ace8>.blockart-container,.blockart-section-4854446c>.blockart-container,.blockart-section-46d290a6>.blockart-container,.blockart-section-a75cf16e>.blockart-container,.blockart-section-7432dbda>.blockart-container,.blockart-section-a6bd4d42>.blockart-container,.blockart-section-d0565662>.blockart-container,.blockart-section-19242202>.blockart-container,.blockart-section-acee1aec>.blockart-container{max-width:1170px}@media (max-width:991.98px){.blockart-heading.blockart-heading-054bc2ca{font-size:48px}.blockart-heading.blockart-heading-40497183,.blockart-heading.blockart-heading-476c2968{font-size:32px}.blockart-column-17c7e230,.blockart-column-d05364ca,.blockart-column-2a7b3b30,.blockart-column-56c879c5,.blockart-column-5c1263a0,.blockart-column-4e2b7566,.blockart-column-ce518c3f,.blockart-column-f5ab0cc8,.blockart-column-72923435,.blockart-column-78108fb7,.blockart-column-1897da14,.blockart-column-69c63e12,.blockart-column-ba24aeb9,.blockart-column-e25d3509,.blockart-column-d376ea15,.blockart-column-bf5f94e8,.blockart-column-d33b9b5f,.blockart-column-3c455d74,.blockart-column-e3d76d6a,.blockart-column-0bad4f43,.blockart-column-78b673b0,.blockart-column-f4525c2c,.blockart-column-5af33076{width:100%}}@media (max-width:767.98px){.blockart-heading.blockart-heading-054bc2ca{font-size:30px}.blockart-heading.blockart-heading-40497183,.blockart-heading.blockart-heading-476c2968{font-size:28px}.blockart-column-17c7e230,.blockart-column-d05364ca,.blockart-column-2a7b3b30,.blockart-column-56c879c5,.blockart-column-5c1263a0,.blockart-column-4e2b7566,.blockart-column-ce518c3f,.blockart-column-f5ab0cc8,.blockart-column-72923435,.blockart-column-78108fb7,.blockart-column-1897da14,.blockart-column-69c63e12,.blockart-column-ba24aeb9,.blockart-column-e25d3509,.blockart-column-d376ea15,.blockart-column-bf5f94e8,.blockart-column-d33b9b5f,.blockart-column-3c455d74,.blockart-column-e3d76d6a,.blockart-column-0bad4f43,.blockart-column-78b673b0,.blockart-column-f4525c2c,.blockart-column-5af33076{width:100%}}</style>
+<script src="https://raspibackup.linux-tips-and-tricks.de/wp-content,_plugins,_simple-file-list,_js,_ee-head.js,qver==7.1.4+wp-includes,_js,_jquery,_jquery.min.js,qver==3.7.1.pagespeed.jc.XszXNcR7fZ.js"></script><script>eval(mod_pagespeed_Vl$4nCDOQP);</script>
+<script>eval(mod_pagespeed_zTAsW_19em);</script>
+<script id="jquery-migrate-js" src="https://raspibackup.linux-tips-and-tricks.de/wp-includes/js/jquery/jquery-migrate.min.js,qver=3.4.1.pagespeed.ce.n_6zLi2e-_.js"></script>
+<link rel="https://api.w.org/" href="https://raspibackup.linux-tips-and-tricks.de/wp-json/"/><link rel="alternate" title="JSON" type="application/json" href="https://raspibackup.linux-tips-and-tricks.de/wp-json/wp/v2/pages/1079"/><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://raspibackup.linux-tips-and-tricks.de/xmlrpc.php?rsd"/>
+<script>window._BLOCKART_WEBPACK_PUBLIC_PATH_ = "https://raspibackup.linux-tips-and-tricks.de/wp-content/plugins/blockart-blocks/dist/"</script>
+        <!-- Wordpress Stats Manager -->
+        <script type="text/javascript">
+            var _wsm = _wsm || [];
+            _wsm.push(['trackPageView']);
+            _wsm.push(['enableLinkTracking']);
+            _wsm.push(['enableHeartBeatTimer']);
+            (function() {
+                var u = "https://raspibackup.linux-tips-and-tricks.de/wp-content/plugins/wp-stats-manager/";
+                _wsm.push(['setUrlReferrer', ""]);
+                _wsm.push(['setTrackerUrl', "https://raspibackup.linux-tips-and-tricks.de/?wmcAction=wmcTrack"]);
+                _wsm.push(['setSiteId', "1"]);
+                _wsm.push(['setPageId', "1079"]);
+                _wsm.push(['setWpUserId', "0"]);
+                var d = document,
+                    g = d.createElement('script'),
+                    s = d.getElementsByTagName('script')[0];
+                g.type = 'text/javascript';
+                g.async = true;
+                g.defer = true;
+                g.src = u + 'js/wsm_new.js';
+                s.parentNode.insertBefore(g, s);
+            })();
+        </script>
+        <!-- End Wordpress Stats Manager Code -->
+<link rel="pingback" href="https://raspibackup.linux-tips-and-tricks.de/xmlrpc.php">
+		<style type="text/css">.site-title{position:absolute;clip:rect(1px,1px,1px,1px)}.site-description{position:absolute;clip:rect(1px,1px,1px,1px)}</style>
+
+		<link rel="icon" href="https://raspibackup.linux-tips-and-tricks.de/wp-content/uploads/2023/09/cropped-Icon_rot_blau_final_32-32x32.png.pagespeed.ce.UnM7A8JU80.png" sizes="32x32"/>
+<link rel="icon" href="https://raspibackup.linux-tips-and-tricks.de/wp-content/uploads/2023/09/cropped-Icon_rot_blau_final_32-192x192.png.pagespeed.ce.zyNIBqDNLW.png" sizes="192x192"/>
+<link rel="apple-touch-icon" href="https://raspibackup.linux-tips-and-tricks.de/wp-content/uploads/2023/09/cropped-Icon_rot_blau_final_32-180x180.png.pagespeed.ce.t0DD7YqEqH.png"/>
+<meta name="msapplication-TileImage" content="https://raspibackup.linux-tips-and-tricks.de/wp-content/uploads/2023/09/cropped-Icon_rot_blau_final_32-270x270.png"/>
+<style id="wp-custom-css">.footer{line-height:2.1rem}.h6{margin-bottom:-25px}.productcategory{margin-top:-25px}a{color:#213da6}</style>
+
+	</head>
+
+<body class="home wp-singular page-template-default page page-id-1079 wp-custom-logo wp-theme-zakra zak-no-content-margin zak-site-layout--stretched zak-site-layout--no_sidebar zak-container--wide zak-content-area--bordered has-page-header has-breadcrumbs">
+
+
+		<div id="page" class="zak-site">
+				<a class="skip-link screen-reader-text" href="#zak-content">Skip to content</a>
+		
+		<header id="zak-masthead" class="zak-header zak-layout-1 zak-layout-1-style-3">
+		
+			
+					<div class="zak-main-header">
+			<div class="zak-container">
+				<div class="zak-row">
+		
+	<div class="zak-header-col zak-header-col--1">
+
+		
+<div class="site-branding">
+	<a href="https://raspibackup.linux-tips-and-tricks.de/en/home/" class="custom-logo-link" rel="home" aria-current="page"><img width="32" height="50" src="https://raspibackup.linux-tips-and-tricks.de/wp-content/uploads/2023/09/Icon_rot_blau_final_32.png.pagespeed.ce.9piXxB3td2.png" class="custom-logo" alt="How to backup your Raspberries" decoding="async"/></a>	<div class="site-info-wrap">
+		
+		<p class="site-title ">
+		<a href="https://raspibackup.linux-tips-and-tricks.de/en/home/" rel="home">How to backup your Raspberries</a>
+	</p>
+
+
+				<p class="site-description ">raspiBackup is the perfect opensource tool to create backups on Raspberries</p>
+		</div>
+</div><!-- .site-branding -->
+
+	</div> <!-- /.zak-header__block--one -->
+
+	<div class="zak-header-col zak-header-col--2">
+
+					
+<nav id="zak-primary-nav" class="zak-main-nav main-navigation zak-primary-nav zak-layout-1-style-1">
+	<ul id="zak-primary-menu" class="zak-primary-menu"><li id="menu-item-1083" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-1079 current_page_item menu-item-1083"><a href="https://raspibackup.linux-tips-and-tricks.de/en/home/" aria-current="page">Home</a></li>
+<li id="menu-item-1307-en" class="polylang-item lang-item lang-item-24 lang-item-en current-lang pll-aspect-ratio-32 menu-item menu-item-type-custom menu-item-object-custom current_page_item menu-item-home menu-item-1307-en"><a href="https://raspibackup.linux-tips-and-tricks.de/en/home/" lang="en-US" hreflang="en-US"><span class="pll-switcher-label">English</span></a></li>
+<li id="menu-item-1307-de" class="polylang-item lang-item lang-item-27 lang-item-de pll-aspect-ratio-32 menu-item menu-item-type-custom menu-item-object-custom menu-item-1307-de"><a href="https://raspibackup.linux-tips-and-tricks.de/de/home-deutsch/" lang="de-DE" hreflang="de-DE"><span class="pll-switcher-label">Deutsch</span></a></li>
+<li id="menu-item-1656" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1656"><a href="https://raspibackup.linux-tips-and-tricks.de/en/documents-about-raspibackup/">Documents</a></li>
+</ul></nav><!-- #zak-primary-nav -->
+
+
+	<div class="zak-header-actions zak-header-actions--desktop">
+
+		<div class="zak-header-action zak-header-search">
+	<a href="#" class="zak-header-search__toggle">
+			<svg class="zak-icon zakra-icon--magnifying-glass" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24"><path d="M21 22c-.3 0-.5-.1-.7-.3L16.6 18c-1.5 1.2-3.5 2-5.6 2-5 0-9-4-9-9s4-9 9-9 9 4 9 9c0 2.1-.7 4.1-2 5.6l3.7 3.7c.4.4.4 1 0 1.4-.2.2-.4.3-.7.3zM11 4c-3.9 0-7 3.1-7 7s3.1 7 7 7c1.9 0 3.6-.8 4.9-2 0 0 0-.1.1-.1s0 0 .1-.1c1.2-1.3 2-3 2-4.9C18 7.1 14.9 4 11 4z"/></svg>	</a>
+			
+<div class="zak-search-container">
+<form role="search" method="get" class="zak-search-form" action="https://raspibackup.linux-tips-and-tricks.de/en/">
+	<label class="zak-search-field-label">
+		<button type="submit" class="zak-icon--search" aria-label="Search">
+
+			<svg class="zak-icon zakra-icon--magnifying-glass" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24"><path d="M21 22c-.3 0-.5-.1-.7-.3L16.6 18c-1.5 1.2-3.5 2-5.6 2-5 0-9-4-9-9s4-9 9-9 9 4 9 9c0 2.1-.7 4.1-2 5.6l3.7 3.7c.4.4.4 1 0 1.4-.2.2-.4.3-.7.3zM11 4c-3.9 0-7 3.1-7 7s3.1 7 7 7c1.9 0 3.6-.8 4.9-2 0 0 0-.1.1-.1s0 0 .1-.1c1.2-1.3 2-3 2-4.9C18 7.1 14.9 4 11 4z"/></svg>
+		</button>
+
+		<span class="screen-reader-text">Search for:</span>
+
+		<input type="search" class="zak-search-field" placeholder="Type &amp; hit Enter &hellip;" value="" name="s" title="Search for:">
+	</label>
+
+	</form>
+<button class="zak-icon--close" role="button" aria-label="Close">
+</button>
+</div>
+</div>
+			
+			</div> <!-- #zak-header-actions -->
+
+	
+
+<div class="zak-toggle-menu ">
+
+	
+	<button class="zak-menu-toggle" aria-label="Primary Menu" aria-expanded="false" aria-controls="zak-mobile-nav">
+
+		<svg class="zak-icon zakra-icon--magnifying-glass-bars" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24"><path d="M17 20H3a1 1 0 0 1 0-2h14a1 1 0 0 1 0 2Zm4-2a1 1 0 0 1-.71-.29L18 15.4a6.29 6.29 0 0 1-10-5A6.43 6.43 0 0 1 14.3 4a6.31 6.31 0 0 1 6.3 6.3 6.22 6.22 0 0 1-1.2 3.7l2.31 2.3a1 1 0 0 1 0 1.42A1 1 0 0 1 21 18ZM14.3 6a4.41 4.41 0 0 0-4.3 4.4 4.25 4.25 0 0 0 4.3 4.2 4.36 4.36 0 0 0 4.3-4.3A4.36 4.36 0 0 0 14.3 6ZM6 14H3a1 1 0 0 1 0-2h3a1 1 0 0 1 0 2Zm0-6H3a1 1 0 0 1 0-2h3a1 1 0 0 1 0 2Z"/></svg>
+	</button> <!-- /.zak-menu-toggle -->
+
+	<nav id="zak-mobile-nav" class="zak-main-nav zak-mobile-nav">
+
+		<div class="zak-mobile-nav__header">
+							
+<div class="zak-search-container">
+<form role="search" method="get" class="zak-search-form" action="https://raspibackup.linux-tips-and-tricks.de/en/">
+	<label class="zak-search-field-label">
+		<button type="submit" class="zak-icon--search" aria-label="Search">
+
+			<svg class="zak-icon zakra-icon--magnifying-glass" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24"><path d="M21 22c-.3 0-.5-.1-.7-.3L16.6 18c-1.5 1.2-3.5 2-5.6 2-5 0-9-4-9-9s4-9 9-9 9 4 9 9c0 2.1-.7 4.1-2 5.6l3.7 3.7c.4.4.4 1 0 1.4-.2.2-.4.3-.7.3zM11 4c-3.9 0-7 3.1-7 7s3.1 7 7 7c1.9 0 3.6-.8 4.9-2 0 0 0-.1.1-.1s0 0 .1-.1c1.2-1.3 2-3 2-4.9C18 7.1 14.9 4 11 4z"/></svg>
+		</button>
+
+		<span class="screen-reader-text">Search for:</span>
+
+		<input type="search" class="zak-search-field" placeholder="Type &amp; hit Enter &hellip;" value="" name="s" title="Search for:">
+	</label>
+
+	</form>
+<button class="zak-icon--close" role="button" aria-label="Close">
+</button>
+</div>
+			
+			<!-- Mobile nav close icon. -->
+			<button id="zak-mobile-nav-close" class="zak-mobile-nav-close" aria-label="Close menu">
+				<svg class="zak-icon zakra-icon--x-mark" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24"><path d="m14 12 7.6-7.6c.6-.6.6-1.5 0-2-.6-.6-1.5-.6-2 0L12 10 4.4 2.4c-.6-.6-1.5-.6-2 0s-.6 1.5 0 2L10 12l-7.6 7.6c-.6.6-.6 1.5 0 2 .3.3.6.4 1 .4s.7-.1 1-.4L12 14l7.6 7.6c.3.3.6.4 1 .4s.7-.1 1-.4c.6-.6.6-1.5 0-2L14 12z"/></svg>			</button>
+		</div> <!-- /.zak-mobile-nav__header -->
+
+		<ul id="zak-mobile-menu" class="zak-mobile-menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-1079 current_page_item menu-item-1083"><a href="https://raspibackup.linux-tips-and-tricks.de/en/home/" aria-current="page">Home</a></li>
+<li class="polylang-item lang-item lang-item-24 lang-item-en current-lang pll-aspect-ratio-32 menu-item menu-item-type-custom menu-item-object-custom current_page_item menu-item-home menu-item-1307-en"><a href="https://raspibackup.linux-tips-and-tricks.de/en/home/" lang="en-US" hreflang="en-US"><span class="pll-switcher-label">English</span></a></li>
+<li class="polylang-item lang-item lang-item-27 lang-item-de pll-aspect-ratio-32 menu-item menu-item-type-custom menu-item-object-custom menu-item-1307-de"><a href="https://raspibackup.linux-tips-and-tricks.de/de/home-deutsch/" lang="de-DE" hreflang="de-DE"><span class="pll-switcher-label">Deutsch</span></a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1656"><a href="https://raspibackup.linux-tips-and-tricks.de/en/documents-about-raspibackup/">Documents</a></li>
+</ul>
+			<div class="zak-mobile-menu-label">
+							</div>
+
+		
+	</nav> <!-- /#zak-mobile-nav-->
+
+</div> <!-- /.zak-toggle-menu -->
+
+				</div> <!-- /.zak-header__block-two -->
+
+				</div> <!-- /.zak-row -->
+			</div> <!-- /.zak-container -->
+		</div> <!-- /.zak-main-header -->
+		
+				</header><!-- #zak-masthead -->
+		
+
+		<div id="zak-content" class="zak-content">
+					<div class="zak-container">
+				<div class="zak-row">
+		
+	<main id="zak-primary" class="zak-primary">
+		
+		
+<article id="post-1079" class="post-1079 page type-page status-publish hentry zakra-article-page">
+
+	<div class="zak-post-content">
+	<header class="zak-entry-header">
+			</header> <!-- .zak-entry-header -->
+
+<div class="entry-content">
+	
+<div class="blockart-section blockart-section-ff770b38"><div class="blockart-container"><div class="blockart-section-inner">
+<div class="blockart-column blockart-column-17c7e230"><div class="blockart-column-inner justify-center">
+<h1 class="blockart-heading blockart-heading-ff888417">Backup your Raspberries</h1>
+
+
+
+<hr class="wp-block-separator has-text-color has-cyan-bluish-gray-color has-alpha-channel-opacity has-cyan-bluish-gray-background-color has-background is-style-default" style="margin-top:var(--wp--preset--spacing--20);margin-bottom:var(--wp--preset--spacing--20)"/>
+
+
+
+<h2 class="blockart-heading blockart-heading-09370480">raspiBackup <br>reliably creates <br>on a regular base<br>full systembackups <br>of your Raspberries <br>and maintains <br>a configurable <br>backup history</h2>
+
+
+
+<hr class="wp-block-separator has-text-color has-cyan-bluish-gray-color has-alpha-channel-opacity has-cyan-bluish-gray-background-color has-background is-style-default" style="margin-top:var(--wp--preset--spacing--20);margin-bottom:var(--wp--preset--spacing--20)"/>
+</div></div>
+</div></div></div>
+
+
+
+<div class="blockart-section blockart-section-1ff356ca"><div class="blockart-container"><div class="blockart-section-inner">
+<div class="blockart-column blockart-column-d05364ca"><div class="blockart-column-inner">
+<h2 class="blockart-heading blockart-heading-40497183">Features</h2>
+
+
+
+<hr class="wp-block-separator has-text-color has-cyan-bluish-gray-color has-alpha-channel-opacity has-cyan-bluish-gray-background-color has-background is-style-wide" style="margin-top:var(--wp--preset--spacing--20);margin-bottom:var(--wp--preset--spacing--20)"/>
+</div></div>
+</div></div></div>
+
+
+
+<div class="blockart-section blockart-section-b92f919b"><div class="blockart-container"><div class="blockart-section-inner">
+<div class="blockart-column blockart-column-2a7b3b30"><div class="blockart-column-inner">
+<figure class="blockart-image blockart-image-781237b3"><a href="https://linux-tips-and-tricks.de/en/smart-recycle/" target="_blank"><img decoding="async" class="wp-image-1871" src="https://raspibackup.linux-tips-and-tricks.de/wp-content/uploads/2023/09/Icon_rot_blau_final_64.png.pagespeed.ce.df7DlG1kHZ.png" alt="" height="99" width="64"/></a></figure>
+
+
+
+<h3 class="blockart-heading blockart-heading-c9977b5f">Regular unattended automatic backup configurable</h3>
+
+
+
+<p class="blockart-paragraph blockart-paragraph-6c5aca85">No manual backup necessary. Regular backups will never be forgotten again.<br>Either the first two RaspberryOS partitions are saved (normal backup mode) or a any configurable partitions are saved (partition oriented backup mode). That way any dedicated data partitions can be included in the backup.</p>
+</div></div>
+</div></div></div>
+
+
+
+<div class="blockart-section blockart-section-4f2d0220"><div class="blockart-container"><div class="blockart-section-inner">
+<div class="blockart-column blockart-column-56c879c5"><div class="blockart-column-inner">
+<figure class="blockart-image blockart-image-fefd401f"><a href="https://linux-tips-and-tricks.de/en/smart-recycle/" target="_blank"><img decoding="async" class="wp-image-1871" src="https://raspibackup.linux-tips-and-tricks.de/wp-content/uploads/2023/09/Icon_rot_blau_final_64.png.pagespeed.ce.df7DlG1kHZ.png" alt="" height="99" width="64"/></a></figure>
+
+
+
+<h3 class="blockart-heading blockart-heading-216df6f0">Easy installation with menu driven installer </h3>
+
+
+
+<p class="blockart-paragraph blockart-paragraph-92585ed9">Install and configure raspiBackup with the major options the same way as raspi-config and create your first backup in just 5 minutes. The installer supports following languages: English, German, Finnish, Chinese and French. </p>
+
+
+
+<p class="blockart-paragraph blockart-paragraph-cb2d739f">All other more sophisticated options described on the <a rel="noreferrer noopener" href="https://framps.github.io/raspiBackupDoc/introduction.html" target="_blank">raspiBackup documentation page</a> can be configured in a configuration file.<br></p>
+</div></div>
+</div></div></div>
+
+
+
+<div class="blockart-section blockart-section-6afe2f69"><div class="blockart-container"><div class="blockart-section-inner">
+<div class="blockart-column blockart-column-5c1263a0"><div class="blockart-column-inner">
+<figure class="blockart-image blockart-image-36e68a88"><img decoding="async" class="wp-image-1871" src="https://raspibackup.linux-tips-and-tricks.de/wp-content/uploads/2023/09/Icon_rot_blau_final_64.png.pagespeed.ce.df7DlG1kHZ.png" alt="" height="99" width="64"/></figure>
+
+
+
+<h3 class="blockart-heading blockart-heading-758ae618">Full and incremental backups </h3>
+
+
+
+<p class="blockart-paragraph blockart-paragraph-1d7b3c3a">Backuptypes dd and tar create full backups. Backuptype rsync creates incremental backups and saves backuptime and -space. A restore will create a system which boots immediately all the time.</p>
+</div></div>
+</div></div></div>
+
+
+
+<div class="blockart-section blockart-section-b8d2bdc6"><div class="blockart-container"><div class="blockart-section-inner">
+<div class="blockart-column blockart-column-4e2b7566"><div class="blockart-column-inner">
+<figure class="blockart-image blockart-image-34989af5"><img decoding="async" class="wp-image-1871" src="https://raspibackup.linux-tips-and-tricks.de/wp-content/uploads/2023/09/Icon_rot_blau_final_64.png.pagespeed.ce.df7DlG1kHZ.png" alt="" height="99" width="64"/></figure>
+
+
+
+<h3 class="blockart-heading blockart-heading-7d2ae7c2">Clone the last backup onto a device after a backup was created</h3>
+
+
+
+<p class="blockart-paragraph blockart-paragraph-53b31c65">The last created backup can be synchronized with any device. This device then can be used to immediately restart the system with latest backup just in case any system failures occur to reduce system down time. There is no restore of a backup required, which will take some more time.</p>
+</div></div>
+</div></div></div>
+
+
+
+<div class="blockart-section blockart-section-0b79a2b9"><div class="blockart-container"><div class="blockart-section-inner">
+<div class="blockart-column blockart-column-ce518c3f"><div class="blockart-column-inner">
+<figure class="blockart-image blockart-image-96763e6b"><a href="https://linux-tips-and-tricks.de/en/smart-recycle/" target="_blank"><img decoding="async" class="wp-image-1871" src="https://raspibackup.linux-tips-and-tricks.de/wp-content/uploads/2023/09/Icon_rot_blau_final_64.png.pagespeed.ce.df7DlG1kHZ.png" alt="" height="99" width="64"/></a></figure>
+
+
+
+<h3 class="blockart-heading blockart-heading-143dbc94">Two backup rotation strategies </h3>
+
+
+
+<p class="blockart-paragraph blockart-paragraph-dca2cdd0">1) Keep a fixed number of the last backups<br>2) Use <a href="https://linux-tips-and-tricks.de/en/smart-recycle/" target="_blank" rel="noreferrer noopener">grandfather, father, son rotation </a><a href="https://framps.github.io/raspiBackupDoc/smart-recycle.html?highlight=smart#intelligent-rotation-strategy---smart-recycle">strategy</a> (GFS) </p>
+</div></div>
+</div></div></div>
+
+
+
+<div class="blockart-section blockart-section-8a29eb1a"><div class="blockart-container"><div class="blockart-section-inner">
+<div class="blockart-column blockart-column-f5ab0cc8"><div class="blockart-column-inner">
+<figure class="blockart-image blockart-image-c43eba04"><img decoding="async" class="wp-image-1871" src="https://raspibackup.linux-tips-and-tricks.de/wp-content/uploads/2023/09/Icon_rot_blau_final_64.png.pagespeed.ce.df7DlG1kHZ.png" alt="" height="99" width="64"/></figure>
+
+
+
+<h3 class="blockart-heading blockart-heading-ff165078">Open source</h3>
+
+
+
+<p class="blockart-paragraph blockart-paragraph-0b431e36">raspiBackup is published under the GNU license as <a href="https://github.com/framps/raspiBackup">open source</a> and available for free. But <a href="https://framps.github.io/raspiBackupDoc/introduction.html?highlight=donation#donations" target="_blank" rel="noreferrer noopener">donations</a> are welcome and will support further development ans support.<br><br>For any questions use github <a href="https://github.com/framps/raspiBackup/discussions">discussions</a> and for any bug reports use github <a href="https://github.com/framps/raspiBackup/issues">issues</a>. <br><br>Registration in github is for free. Just use it.</p>
+</div></div>
+</div></div></div>
+
+
+
+<div class="blockart-section blockart-section-a2ec25ad"><div class="blockart-container"><div class="blockart-section-inner">
+<div class="blockart-column blockart-column-72923435"><div class="blockart-column-inner">
+<figure class="blockart-image blockart-image-fc5a7c46"><img decoding="async" class="wp-image-1871" src="https://raspibackup.linux-tips-and-tricks.de/wp-content/uploads/2023/09/Icon_rot_blau_final_64.png.pagespeed.ce.df7DlG1kHZ.png" alt="" height="99" width="64"/></figure>
+
+
+
+<h3 class="blockart-heading blockart-heading-1f30a2ab">Notifications</h3>
+
+
+
+<p class="blockart-paragraph blockart-paragraph-8990e63c">Get a mail with the backup run messages or use Telegram, Pushover or Slack. The topic has a 🙂 or 🙁 to report success or failure of the backup run. Other smilies inform about other important events like the availability of a new release or a reminder to execute a restore test which should be executed from time to time to verify backup integrity.</p>
+</div></div>
+</div></div></div>
+
+
+
+<div class="blockart-section blockart-section-dfb178e1"><div class="blockart-container"><div class="blockart-section-inner">
+<div class="blockart-column blockart-column-78108fb7"><div class="blockart-column-inner">
+<figure class="blockart-image blockart-image-c3d326e8"><a href="https://linux-tips-and-tricks.de/en/all-raspibackup-articles/"><img decoding="async" class="wp-image-1871" src="https://raspibackup.linux-tips-and-tricks.de/wp-content/uploads/2023/09/Icon_rot_blau_final_64.png.pagespeed.ce.df7DlG1kHZ.png" alt="" height="99" width="64"/></a></figure>
+
+
+
+<h3 class="blockart-heading blockart-heading-f5178daa">All Raspberry boot modes are supported</h3>
+
+
+
+<p class="blockart-paragraph blockart-paragraph-d92c7961">1) <em>Boot from SD card only:</em> Both partitions are located on a SD card (any model).<br>2) <em>Hybrid mode:</em> Boot from SD card but use the root partition located on USB device. Required for older Raspberries which don&#8217;t support USB boot (2A and 2B).<br>3) <em>Boot from USB device or SSD (USB boot mode): </em> Both partitions are located on an USB device. Used on latest Raspberries which support USB boot mode (3B, 4, 400 and 5)</p>
+</div></div>
+</div></div></div>
+
+
+
+<div class="blockart-section blockart-section-7be6afd7"><div class="blockart-container"><div class="blockart-section-inner">
+<div class="blockart-column blockart-column-1897da14"><div class="blockart-column-inner">
+<figure class="blockart-image blockart-image-05532d00"><img decoding="async" class="wp-image-1871" src="https://raspibackup.linux-tips-and-tricks.de/wp-content/uploads/2023/09/Icon_rot_blau_final_64.png.pagespeed.ce.df7DlG1kHZ.png" alt="" height="99" width="64"/></figure>
+
+
+
+<h3 class="blockart-heading blockart-heading-b1708ae7">Snapshots</h3>
+
+
+
+<p class="blockart-paragraph blockart-paragraph-e673cbd3">Create snapshots with a comment whenever you update your system or install a new system when major changes are planned. If later on something went wrong or even the system becomes unusable restore the previous snapshot and resume updating or installation. Otherwise you have to start from scratch again. </p>
+</div></div>
+</div></div></div>
+
+
+
+<div class="blockart-section blockart-section-b68653e5"><div class="blockart-container"><div class="blockart-section-inner">
+<div class="blockart-column blockart-column-69c63e12"><div class="blockart-column-inner">
+<figure class="blockart-image blockart-image-f278967e"><img decoding="async" class="wp-image-1871" src="https://raspibackup.linux-tips-and-tricks.de/wp-content/uploads/2023/09/Icon_rot_blau_final_64.png.pagespeed.ce.df7DlG1kHZ.png" alt="" height="99" width="64"/></figure>
+
+
+
+<h3 class="blockart-heading blockart-heading-e06f8a40">Support on github and other social media channels </h3>
+
+
+
+<p class="blockart-paragraph blockart-paragraph-d95145a8">Ask questions on <a href="https://github.com/framps/raspiBackup/discussions">github</a> or <a href="https://www.facebook.com/raspiBackup">Facebook</a>. Report issues on <a href="https://github.com/framps/raspiBackup/issues">github</a>. View videos on <a href="https://www.youtube.com/channel/UCnFHtfMXVpWy6mzMazqyINg">Youtube</a>.</p>
+
+
+
+<p class="blockart-paragraph blockart-paragraph-792adf9b">News are published on <a href="https://www.facebook.com/raspiBackup">Facebook</a>, <a href="https://www.reddit.com/r/raspiBackup/">Reddit</a> and <a href="https://twitter.com/linuxframp">Twitter</a>.</p>
+</div></div>
+</div></div></div>
+
+
+
+<div class="blockart-section blockart-section-3fe1385a"><div class="blockart-container"><div class="blockart-section-inner">
+<div class="blockart-column blockart-column-ba24aeb9"><div class="blockart-column-inner">
+<figure class="blockart-image blockart-image-720ddc41"><img decoding="async" class="wp-image-1871" src="https://raspibackup.linux-tips-and-tricks.de/wp-content/uploads/2023/09/Icon_rot_blau_final_64.png.pagespeed.ce.df7DlG1kHZ.png" alt="" height="99" width="64"/></figure>
+
+
+
+<h3 class="blockart-heading blockart-heading-2897cebb">Any number of backups from the past can be stored</h3>
+
+
+
+<p class="wp-block-paragraph">Not only one backup is created but also a backup version history can be kept. Either you define a number of backups to keep or you use the GVS principle (called intelligent rotation strategy in raspiBackup)</p>
+</div></div>
+</div></div></div>
+
+
+
+<div class="blockart-section blockart-section-2f8e8161"><div class="blockart-container"><div class="blockart-section-inner">
+<div class="blockart-column blockart-column-e25d3509"><div class="blockart-column-inner">
+<figure class="blockart-image blockart-image-d9f1ce82"><a href="https://linux-tips-and-tricks.de/en/smart-recycle/" target="_blank"><img decoding="async" class="wp-image-1871" src="https://raspibackup.linux-tips-and-tricks.de/wp-content/uploads/2023/09/Icon_rot_blau_final_64.png.pagespeed.ce.df7DlG1kHZ.png" alt="" height="99" width="64"/></a></figure>
+
+
+
+<h3 class="blockart-heading blockart-heading-3263355a">Restore backups on Windows</h3>
+
+
+
+<p class="blockart-paragraph blockart-paragraph-0f7e8832">Backuptype dd can be restored on a Windows system with win32diskimager or any other Windows restore tool . tar and rsync backuptypes require a Linux system which can be a Raspberry 🙂<br><br></p>
+</div></div>
+</div></div></div>
+
+
+
+<div class="blockart-section blockart-section-3046ace8"><div class="blockart-container"><div class="blockart-section-inner">
+<div class="blockart-column blockart-column-d376ea15"><div class="blockart-column-inner">
+<figure class="blockart-image blockart-image-e67c2c57"><a href="https://linux-tips-and-tricks.de/en/all-raspibackup-articles/"><img decoding="async" class="wp-image-1871" src="https://raspibackup.linux-tips-and-tricks.de/wp-content/uploads/2023/09/Icon_rot_blau_final_64.png.pagespeed.ce.df7DlG1kHZ.png" alt="" height="99" width="64"/></a></figure>
+
+
+
+<h3 class="blockart-heading blockart-heading-e1ea12b5">Updatenotifications </h3>
+
+
+
+<p class="blockart-paragraph blockart-paragraph-ebdedc86">Whenever there is a new release or beta available raspiBackup writes a notification message which informs about the new release or beta. Easy upgrade to and downgrade from the new release is possible.</p>
+</div></div>
+</div></div></div>
+
+
+
+<div class="blockart-section blockart-section-4854446c"><div class="blockart-container"><div class="blockart-section-inner">
+<div class="blockart-column blockart-column-bf5f94e8"><div class="blockart-column-inner">
+<figure class="blockart-image blockart-image-3a64e075"><img decoding="async" class="wp-image-1871" src="https://raspibackup.linux-tips-and-tricks.de/wp-content/uploads/2023/09/Icon_rot_blau_final_64.png.pagespeed.ce.df7DlG1kHZ.png" alt="" height="99" width="64"/></figure>
+
+
+
+<h3 class="blockart-heading blockart-heading-df0071d9">Automated regression testsuite </h3>
+
+
+
+<p class="blockart-paragraph blockart-paragraph-20c9eef9">Basic functionality of raspiBackup (backup and restore) for all backup types and backup modes is regression tested to make sure every new release will work reliable as before.</p>
+</div></div>
+</div></div></div>
+
+
+
+<div class="blockart-section blockart-section-46d290a6"><div class="blockart-container"><div class="blockart-section-inner">
+<div class="blockart-column blockart-column-d33b9b5f"><div class="blockart-column-inner">
+<figure class="blockart-image blockart-image-d9ceae66"><a href="https://linux-tips-and-tricks.de/en/all-raspibackup-articles/"><img decoding="async" class="wp-image-1871" src="https://raspibackup.linux-tips-and-tricks.de/wp-content/uploads/2023/09/Icon_rot_blau_final_64.png.pagespeed.ce.df7DlG1kHZ.png" alt="" height="99" width="64"/></a></figure>
+
+
+
+<h3 class="blockart-heading blockart-heading-8f779ab1">Documentation </h3>
+
+
+
+<p class="blockart-paragraph blockart-paragraph-4a3f0b2f">There exists a<a rel="noreferrer noopener" href="https://framps.github.io/raspiBackupDoc/introduction.html" target="_blank"> complete </a><a href="https://framps.github.io/raspiBackupDoc//introduction.html" target="_blank" rel="noreferrer noopener">raspiBackup</a><a rel="noreferrer noopener" href="https://framps.github.io/raspiBackupDoc/introduction.html" target="_blank"> documentation</a> with <a href="https://framps.github.io/raspiBackupDoc/faq.html" target="_blank" rel="noreferrer noopener">FAQs</a>, <a href="https://framps.github.io/raspiBackupDoc/configuration-examples.html">configuration</a><a href="https://linux-tips-and-tricks.de/en/configuration-samples/"> </a><a rel="noreferrer noopener" href="https://linux-tips-and-tricks.de/en/configuration-samples/" target="_blank">examples</a>, <a href="https://linux-tips-and-tricks.de/en/synology/">NFS </a><a rel="noreferrer noopener" href="https://framps.github.io/raspiBackupDoc/nfs-as-backuptarget.html?highlight=nfs#nfs-as-backup-target" target="_blank">configuration</a><a href="https://linux-tips-and-tricks.de/en/raspibackupmessagese/">, list of </a><a rel="noreferrer noopener" href="https://linux-tips-and-tricks.de/en/raspibackupmessagese/" target="_blank">error</a><a href="https://linux-tips-and-tricks.de/en/raspibackupmessagese/"> </a><a href="https://framps.github.io/raspiBackupDoc/error-messages.html">messages</a> and how to get rid of them and much much more. </p>
+
+
+
+<p class="blockart-paragraph blockart-paragraph-3dcf1498">In addition there exists a <a href="https://www.youtube.com/channel/UCnFHtfMXVpWy6mzMazqyINg">raspiBackup channel on Youtube</a> which covers various raspiBackup topics.</p>
+</div></div>
+</div></div></div>
+
+
+
+<div class="blockart-section blockart-section-a75cf16e"><div class="blockart-container"><div class="blockart-section-inner">
+<div class="blockart-column blockart-column-3c455d74"><div class="blockart-column-inner">
+<figure class="blockart-image blockart-image-58c718d0"><a href="https://linux-tips-and-tricks.de/en/all-raspibackup-articles/"><img decoding="async" class="wp-image-1871" src="https://raspibackup.linux-tips-and-tricks.de/wp-content/uploads/2023/09/Icon_rot_blau_final_64.png.pagespeed.ce.df7DlG1kHZ.png" alt="" height="99" width="64"/></a></figure>
+
+
+
+<h3 class="blockart-heading blockart-heading-6eeca50c">Helper and sample scripts </h3>
+
+
+
+<p class="blockart-paragraph blockart-paragraph-137bcc6f">Various <a href="https://github.com/framps/raspiBackup/tree/master/helper#readme">helper scripts </a>are available. </p>
+</div></div>
+</div></div></div>
+
+
+
+<div class="blockart-section blockart-section-7432dbda"><div class="blockart-container"><div class="blockart-section-inner">
+<div class="blockart-column blockart-column-e3d76d6a"><div class="blockart-column-inner">
+<figure class="blockart-image blockart-image-2d870bf5"><img decoding="async" class="wp-image-1871" src="https://raspibackup.linux-tips-and-tricks.de/wp-content/uploads/2023/09/Icon_rot_blau_final_64.png.pagespeed.ce.df7DlG1kHZ.png" alt="" height="99" width="64"/></figure>
+
+
+
+<h3 class="blockart-heading blockart-heading-8d0e2110">NVMe storage support</h3>
+
+
+
+<p class="blockart-paragraph blockart-paragraph-6fd7f144">NVMe used by Raspberry 5 and compute model 4 (CM4) is supported</p>
+</div></div>
+</div></div></div>
+
+
+
+<div class="blockart-section blockart-section-a6bd4d42"><div class="blockart-container"><div class="blockart-section-inner">
+<div class="blockart-column blockart-column-0bad4f43"><div class="blockart-column-inner">
+<figure class="blockart-image blockart-image-781e9769"><img decoding="async" class="wp-image-1871" src="https://raspibackup.linux-tips-and-tricks.de/wp-content/uploads/2023/09/Icon_rot_blau_final_64.png.pagespeed.ce.df7DlG1kHZ.png" alt="" height="99" width="64"/></figure>
+
+
+
+<h3 class="blockart-heading blockart-heading-e0e3e020">Supported operating systems</h3>
+
+
+
+<p class="blockart-paragraph blockart-paragraph-b2a4aeeb">&#8211; <a href="https://www.raspberrypi.com/software/operating-systems/">Raspberry Pi OS/RaspbianOS</a><br>&#8211; <a href="https://ubuntu.com/download/raspberry-pi">Ubuntu</a> </p>
+</div></div>
+</div></div></div>
+
+
+
+<div class="blockart-section blockart-section-d0565662"><div class="blockart-container"><div class="blockart-section-inner">
+<div class="blockart-column blockart-column-78b673b0"><div class="blockart-column-inner">
+<figure class="blockart-image blockart-image-87ee6d25"><img decoding="async" class="wp-image-1871" src="https://raspibackup.linux-tips-and-tricks.de/wp-content/uploads/2023/09/Icon_rot_blau_final_64.png.pagespeed.ce.df7DlG1kHZ.png" alt="" height="99" width="64"/></figure>
+
+
+
+<h3 class="blockart-heading blockart-heading-1ec48dc3">Easy system transfer to any other device</h3>
+
+
+
+<p class="blockart-paragraph blockart-paragraph-19cfa439">Just restore any backup on any device like a SD card, USB or SSD or NVMe drive or USB flash drive.  That way a system is easily migrated to another device.</p>
+</div></div>
+</div></div></div>
+
+
+
+<div class="blockart-section blockart-section-19242202"><div class="blockart-container"><div class="blockart-section-inner">
+<div class="blockart-column blockart-column-f4525c2c"><div class="blockart-column-inner">
+<figure class="blockart-image blockart-image-47f83b6c"><img decoding="async" class="wp-image-1871" src="https://raspibackup.linux-tips-and-tricks.de/wp-content/uploads/2023/09/Icon_rot_blau_final_64.png.pagespeed.ce.df7DlG1kHZ.png" alt="" height="99" width="64"/></figure>
+
+
+
+<h3 class="blockart-heading blockart-heading-d56f5ad4">Extension points for custom logic</h3>
+
+
+
+<p class="blockart-paragraph blockart-paragraph-99d0f4ff">Extension points allow to add any custom logic to be executed at various steps in the backup and restore process.</p>
+
+
+
+<p class="blockart-paragraph blockart-paragraph-0a4cd16b">For example there exists an extension which stops all docker containers before the backup and finally starts them again.</p>
+</div></div>
+</div></div></div>
+
+
+
+<div class="blockart-section blockart-section-acee1aec"><div class="blockart-container"><div class="blockart-section-inner">
+<div class="blockart-column blockart-column-5af33076"><div class="blockart-column-inner">
+<h2 class="blockart-heading blockart-heading-476c2968">Installation demo</h2>
+</div></div>
+</div></div></div>
+
+
+
+<h2 class="wp-block-heading has-text-align-center"><br>Chinese, Finnish, French and German is also supported</h2>
+
+
+
+<figure class="wp-block-image aligncenter size-full"><img decoding="async" src="https://raspibackup.linux-tips-and-tricks.de/wp-content/uploads/2026/08/raspiBackupInstall_en.gif.pagespeed.ce.LtwehGzXOe.gif" alt="" class="wp-image-2304"/></figure>
+
+
+
+<div class="wp-block-group has-vivid-red-color has-text-color has-background is-layout-flow wp-block-group-is-layout-flow" style="background-color:#ececec">
+<h2 class="blockart-heading blockart-heading-054bc2ca">Let&#8217;s go now and <br><a href="https://framps.github.io/raspiBackupDoc/installation-in-5-minutes.html" target="_blank" rel="noreferrer noopener"><em><strong>create your first backup</strong></em></a><br>in 5 minutes <br><br>🙂</h2>
+</div>
+</div><!-- .entry-content -->
+</article><!-- #post-1079 -->
+
+			</main><!-- /.zak-primary -->
+
+
+					</div> <!-- /.row -->
+			</div> <!-- /.zak-container-->
+		</div> <!-- /#zak-content-->
+		
+			<footer id="zak-footer" class="zak-footer ">
+			
+<div class="zak-footer-bar zak-style-2">
+	<div class="zak-container">
+		<div class="zak-row">
+			<div class="zak-footer-bar__1">
+
+				Copyright © 2026 <a href="https://raspibackup.linux-tips-and-tricks.de/en/home/" title="How to backup your Raspberries">How to backup your Raspberries</a>. Powered by <a href="https://zakratheme.com/" target="_blank" title="Zakra" rel="nofollow">Zakra</a> and <a href="https://wpblockart.com/">BlockArt</a>.
+			</div> <!-- /.zak-footer-bar__1 -->
+
+					</div> <!-- /.zak-row-->
+	</div> <!-- /.zak-container-->
+</div> <!-- /.zak-site-footer-bar -->
+
+			</footer><!-- #zak-footer -->
+		
+		</div><!-- #page -->
+		
+<a href="#" id="zak-scroll-to-top" class="zak-scroll-to-top">
+	
+		<svg class="zak-icon zakra-icon--chevron-up" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24"><path d="M21 17.5c-.3 0-.5-.1-.7-.3L12 8.9l-8.3 8.3c-.4.4-1 .4-1.4 0s-.4-1 0-1.4l9-9c.4-.4 1-.4 1.4 0l9 9c.4.4.4 1 0 1.4-.2.2-.4.3-.7.3z"/></svg>		<span class="screen-reader-text">Scroll to top</span>
+
+	
+</a>
+
+<div class="zak-overlay-wrapper"></div>
+
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/zakra/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script id="ee-simple-file-list-js-foot-js-extra">
+var eesfl_vars = {"ajaxurl":"https://raspibackup.linux-tips-and-tricks.de/wp-admin/admin-ajax.php","eeEditText":"Edit","eeConfirmDeleteText":"Are you sure you want to delete this?","eeCancelText":"Cancel","eeCopyLinkText":"The Link Has Been Copied","eeUploadLimitText":"Upload Limit","eeFileTooLargeText":"This file is too large","eeFileNotAllowedText":"This file type is not allowed","eeUploadErrorText":"Upload Failed","eeFilesSelected":"Files Selected","eeShowText":"Show","eeHideText":"Hide"};
+//# sourceURL=ee-simple-file-list-js-foot-js-extra
+</script>
+<script src="https://raspibackup.linux-tips-and-tricks.de/wp-content/plugins,_simple-file-list,_js,_ee-footer.js,qver==6.1.9+themes,_zakra,_assets,_js,_navigation.min.js,qver==4.3.3+themes,_zakra,_assets,_js,_skip-link-focus-fix.min.js,qver==4.3.3+themes,_zakra,_assets,_js,_zakra-custom.min.js,qver==4.3.3.pagespeed.jc.9TDb-QU3ve.js"></script><script>eval(mod_pagespeed_nKTxqqSVZL);</script>
+<script>eval(mod_pagespeed_$i6rn0zsIB);</script>
+<script>eval(mod_pagespeed_SuCQlBk_ch);</script>
+<script>eval(mod_pagespeed_6A_eGl_JZj);</script>
+<script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"https://raspibackup.linux-tips-and-tricks.de/wp-includes/js/wp-emoji-release.min.js?ver=7.1.4"}}
+</script>
+<script type="module">
+/*! This file is auto-generated */
+var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof HTMLScriptElement))throw new Error("Element missing: "+e);const r=JSON.parse(t.text),s=(window._wpemojiSettings=r,"wpEmojiSettingsSupports"),o=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(s,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const r=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===r[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,r){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!r(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,r){let a;const s=(a="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),o=(s.textBaseline="top",s.font="600 32px Arial",{});return e.forEach(e=>{o[e]=t(s,e,n,r)}),o}function a(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}r.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(s));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(o),u.toString(),c.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"});const a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=e=>{i(n=e.data),a.terminate(),t(n)})}catch(e){}i(n=f(o,u,c,p))}t(n)}).then(e=>{for(const n in e)r.supports[n]=e[n],r.supports.everything=r.supports.everything&&r.supports[n],"flag"!==n&&(r.supports.everythingExceptFlag=r.supports.everythingExceptFlag&&r.supports[n]);var t;r.supports.everythingExceptFlag=r.supports.everythingExceptFlag&&!r.supports.flag,r.supports.everything||((t=r.source||{}).concatemoji?a(t.concatemoji):t.wpemoji&&t.twemoji&&(a(t.twemoji),a(t.wpemoji)))});
+//# sourceURL=https://raspibackup.linux-tips-and-tricks.de/wp-includes/js/wp-emoji-loader.min.js
+</script>
+
+</body>
+</html>

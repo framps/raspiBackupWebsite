@@ -1,0 +1,6 @@
+# Demo environment: rebuilt by demo/setup.sh
+demo/wordpress/
+demo/db/
+demo/.cache/
+demo/run/
+demo/logs/
