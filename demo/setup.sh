@@ -25,7 +25,6 @@ fetch https://wordpress.org/latest.tar.gz                                       
 fetch https://downloads.wordpress.org/theme/zakra.zip                             zakra.zip
 fetch https://downloads.wordpress.org/plugin/polylang.latest-stable.zip           polylang.zip
 fetch https://downloads.wordpress.org/plugin/blockart-blocks.latest-stable.zip    blockart-blocks.zip
-fetch https://downloads.wordpress.org/plugin/simple-file-list.latest-stable.zip   simple-file-list.zip
 fetch https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar   wp-cli.phar
 
 # ---------- Snapshot of the live site ----------
@@ -48,7 +47,7 @@ info "Installing WordPress files"
 mkdir -p "$WP_DIR"
 tar xzf "$CACHE_DIR/wordpress.tar.gz" -C "$WP_DIR" --strip-components=1
 unzip -q "$CACHE_DIR/zakra.zip" -d "$WP_DIR/wp-content/themes"
-for p in polylang blockart-blocks simple-file-list; do unzip -q "$CACHE_DIR/$p.zip" -d "$WP_DIR/wp-content/plugins"; done
+for p in polylang blockart-blocks; do unzip -q "$CACHE_DIR/$p.zip" -d "$WP_DIR/wp-content/plugins"; done
 ln -s "$THEME_DIR" "$WP_DIR/wp-content/themes/raspibackup-pro"   # live link: theme edits show up immediately
 mkdir -p "$WP_DIR/wp-content/mu-plugins"
 cp "$DEMO_DIR/lib/demo-mu-plugin.php" "$WP_DIR/wp-content/mu-plugins/rbp-demo.php"
@@ -59,6 +58,13 @@ for f in 2023/09/Icon_rot_blau_final.png 2023/09/Icon_rot_blau_final_32.png 2023
          2026/08/raspiBackupInstall_en.gif 2026/08/raspiBackupInstall_de.gif; do
 	mkdir -p "$WP_DIR/wp-content/uploads/$(dirname "$f")"
 	curl -fsSL -o "$WP_DIR/wp-content/uploads/$f" "$LIVE/wp-content/uploads/$f" || info "Could not download $f (continuing)"
+done
+
+# PDFs for the Documents page (same location as on the live site).
+info "Downloading the PDFs of the Documents page"
+mkdir -p "$WP_DIR/wp-content/uploads/simple-file-list"
+for f in $(grep -oE 'simple-file-list/[^"]+\.pdf' "$PROJECT_DIR/site-content/documents-page.html" | sort -u | cut -d/ -f2); do
+	curl -fsSL -o "$WP_DIR/wp-content/uploads/simple-file-list/$f" "$LIVE/wp-content/uploads/simple-file-list/$f" || info "Could not download $f (continuing)"
 done
 
 # ---------- Database ----------
@@ -81,11 +87,11 @@ wp rewrite structure '/%postname%/' --quiet
 wp option update zakra_migrations 1 --quiet
 wp option delete zakra_maybe_enable_builder --quiet 2>/dev/null || true
 
-wp plugin activate polylang blockart-blocks simple-file-list --quiet
+wp plugin activate polylang blockart-blocks --quiet
 wp theme activate zakra --quiet
 
 info "Importing content from the snapshot"
-wp eval-file "$DEMO_DIR/lib/import.php" "$SNAP_DIR"
+wp eval-file "$DEMO_DIR/lib/import.php" "$SNAP_DIR" "$PROJECT_DIR/site-content/documents-page.html"
 wp rewrite flush --quiet
 
 # Start with the new design (Zakra settings + Polylang menus are copied on activation).

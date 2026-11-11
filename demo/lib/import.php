@@ -34,7 +34,9 @@ $doc_html = file_get_contents( "$snap/documents-en.html" );
 
 $en_content  = rbpd_between( $en_html, '#<div class="entry-content">#', '</div><!-- .entry-content -->' );
 $de_content  = rbpd_between( $de_html, '#<div id="primary" class="zak-primary pagebuilder-content">#', '</div><!-- zak-primary -->' );
-$doc_content = rbpd_between( $doc_html, '#<div class="entry-content">#', '</div><!-- .entry-content -->' );
+// Documents page: the plugin-free version (Simple File List was closed for a security issue).
+$doc_file    = isset( $args[1] ) ? $args[1] : '';
+$doc_content = is_readable( $doc_file ) ? file_get_contents( $doc_file ) : '';
 foreach ( array( 'EN home' => $en_content, 'DE home' => $de_content, 'Documents' => $doc_content ) as $k => $v ) {
 	if ( '' === $v ) {
 		WP_CLI::warning( "Could not extract content for $k – the live page markup may have changed." );
@@ -89,7 +91,7 @@ $page = static function ( $title, $slug, $content ) {
 
 $en  = $page( 'Home', 'home', $wrap( $en_content ) );
 $de  = $page( 'Home Deutsch', 'home-deutsch', $wrap( $de_content ) );
-$doc = $page( 'Documents about raspiBackup', 'documents-about-raspibackup', $wrap( $doc_content ) );
+$doc = $page( 'Documents about raspiBackup', 'documents-about-raspibackup', $doc_content );
 
 // Same Zakra page settings as on the live site.
 update_post_meta( $en, 'zakra_page_container_layout', 'stretched' );
