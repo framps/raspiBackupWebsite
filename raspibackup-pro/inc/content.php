@@ -114,7 +114,7 @@ function rbp_content( $lang ) {
 				array(
 					'icon'  => 'copy',
 					'title' => 'Klon für den Notfall',
-					'text'  => 'Das letzte Backup kann nach jeder erfolgreichen Sicherung automatisch auf ein beliebiges Gerät synchronisiert werden. Bei einem Systemausfall wird einfach davon gestartet – ganz ohne zeitaufwändige Wiederherstellung.',
+					'text'  => 'Seit Release 0.7.3 kann nach jeder Sicherung automatisch ein Klon auf einem lokal angeschlossenen Gerät erstellt werden (Option --clone). Fällt das System aus, wird einfach vom Klon gestartet – ganz ohne zeitaufwändige Wiederherstellung. Mit rsync ist der Klon in kürzester Zeit aktualisiert. ' . $lnk( $doc . 'how-to-enable-clone.html', 'So richtest Du den Klon ein' ) . '.',
 				),
 				array(
 					'icon'  => 'camera',
@@ -267,7 +267,7 @@ function rbp_content( $lang ) {
 			array(
 				'icon'  => 'copy',
 				'title' => 'Standby clone',
-				'text'  => 'After every successful backup the latest backup can be synchronized to any device. If your system fails, simply boot from that device – no time-consuming restore required, minimal downtime.',
+				'text'  => 'Since release 0.7.3, raspiBackup can create a clone on a locally connected device after every backup (option --clone). If your system fails, simply boot from the clone – no time-consuming restore required, minimal downtime. With rsync the clone is updated in no time. ' . $lnk( $doc . 'how-to-enable-clone.html', 'How to set up the clone' ) . '.',
 			),
 			array(
 				'icon'  => 'camera',
