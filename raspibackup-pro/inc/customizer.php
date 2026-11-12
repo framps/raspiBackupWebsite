@@ -67,7 +67,7 @@ add_action(
 					array(
 						'section'     => 'rbp_section',
 						'label'       => $label,
-						'description' => 'Leer = raspiBackupInstall_' . $lang . '.gif aus der Mediathek. / Empty = raspiBackupInstall_' . $lang . '.gif from the media library.',
+						'description' => 'Leer = install_' . $lang . '.gif aus der Mediathek. / Empty = install_' . $lang . '.gif from the media library.',
 					)
 				)
 			);

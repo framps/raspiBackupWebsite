@@ -193,8 +193,8 @@ function rbp_logo_url() {
  */
 function rbp_demo_url( $lang ) {
 	$defaults = array(
-		'en' => content_url( '/uploads/2026/08/raspiBackupInstall_en.gif' ),
-		'de' => content_url( '/uploads/2026/08/raspiBackupInstall_de.gif' ),
+		'en' => content_url( '/uploads/2026/11/install_en.gif' ),
+		'de' => content_url( '/uploads/2026/11/install_de.gif' ),
 	);
 	$url = get_theme_mod( 'rbp_demo_' . $lang, '' );
 	return $url ? $url : $defaults[ $lang ];

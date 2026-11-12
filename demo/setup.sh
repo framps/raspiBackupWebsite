@@ -55,7 +55,7 @@ cp "$DEMO_DIR/lib/demo-mu-plugin.php" "$WP_DIR/wp-content/mu-plugins/rbp-demo.ph
 # Media used by both designs (logo, demo GIFs) at the same paths as on the live site.
 info "Downloading logo and demo GIFs"
 for f in 2023/09/Icon_rot_blau_final.png 2023/09/Icon_rot_blau_final_32.png 2023/09/Icon_rot_blau_final_64.png \
-         2026/08/raspiBackupInstall_en.gif 2026/08/raspiBackupInstall_de.gif; do
+         2026/11/install_en.gif 2026/11/install_de.gif; do
 	mkdir -p "$WP_DIR/wp-content/uploads/$(dirname "$f")"
 	curl -fsSL -o "$WP_DIR/wp-content/uploads/$f" "$LIVE/wp-content/uploads/$f" || info "Could not download $f (continuing)"
 done
