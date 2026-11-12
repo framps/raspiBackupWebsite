@@ -4,3 +4,6 @@ demo/db/
 demo/.cache/
 demo/run/
 demo/logs/
+
+# Exported Claude Code conversations (local only)
+2026-*.txt
