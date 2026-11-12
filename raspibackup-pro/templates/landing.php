@@ -231,7 +231,7 @@ add_action(
 			</header>
 			<div class="rbp-demo<?php echo $yt_id ? ' rbp-demo--two' : ''; ?>">
 				<div class="rbp-window rbp-window--lg">
-					<div class="rbp-window__bar" aria-hidden="true"><i></i><i></i><i></i><span>sudo bash ./raspiBackupInstallUI.sh</span></div>
+					<div class="rbp-window__bar" aria-hidden="true"><i></i><i></i><i></i><span title="<?php echo esc_attr( $c['install_cmd'] ); ?>">$ <?php echo esc_html( $c['install_cmd'] ); ?></span></div>
 					<img src="<?php echo esc_url( rbp_demo_url( $rbp_lang ) ); ?>" alt="<?php echo esc_attr( $c['demo_alt'] ); ?>" loading="lazy" decoding="async">
 				</div>
 				<?php if ( $yt_id ) : ?>
