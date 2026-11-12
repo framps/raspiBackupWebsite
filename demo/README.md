@@ -1,7 +1,7 @@
 # Local demo – raspiBackup Pro vs. classic layout
 
 A complete local copy of raspibackup.linux-tips-and-tricks.de to evaluate the new design:
-WordPress + Zakra + Polylang + BlockArt + Simple File List, with your real EN/DE home pages and
+WordPress + Zakra + Polylang + BlockArt, with your real EN/DE home pages and
 the Documents page imported from the live site. Nothing on the live site is changed.
 
 ## Usage
