@@ -115,6 +115,27 @@ add_action(
 	100
 );
 
+/**
+ * Privacy (DSGVO): Zakra prints <link rel="preconnect" href="https://fonts.gstatic.com">,
+ * which makes every visitor's browser contact Google even though no Google Font is loaded.
+ * Remove it wherever this theme drops the Google Fonts.
+ */
+add_action(
+	'wp_head',
+	function () {
+		if ( ! class_exists( 'Zakra_Enqueue_Scripts' ) ) {
+			return;
+		}
+		$no_google = rbp_is_landing()
+			|| ( get_theme_mod( 'rbp_inner_styling', true ) && get_theme_mod( 'rbp_no_google_fonts', true )
+				&& ! get_theme_mod( 'zakra_load_google_fonts_locally', false ) );
+		if ( $no_google ) {
+			remove_action( 'wp_head', array( Zakra_Enqueue_Scripts::get_instance(), 'preload_web_fonts' ), 1 );
+		}
+	},
+	0
+);
+
 add_filter(
 	'body_class',
 	function ( $classes ) {
