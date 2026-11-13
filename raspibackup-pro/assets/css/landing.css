@@ -385,7 +385,10 @@ body.rbp-landing {
 .rbp-oss__item p { font-size: 15.5px; color: var(--rbp-muted); }
 .rbp-oss__icon { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; background: #e2f0cd; color: #4f7f12; }
 .rbp-oss__item:nth-child(3n+2) .rbp-oss__icon { background: #fde3ea; color: var(--rbp-berry); }
-.rbp-oss__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 52px; }
+.rbp-oss__thanks { display: flex; gap: 16px; align-items: flex-start; max-width: 820px; margin: 56px auto 0 !important; padding: 20px 24px; border-radius: var(--rbp-radius); background: #fff; border: 1px solid #f3c7d4; box-shadow: var(--rbp-shadow); font-size: 15.5px; color: var(--rbp-text); }
+.rbp-oss__thanks strong { color: var(--rbp-ink); }
+.rbp-oss__thanks-icon { flex: none; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: #fde3ea; color: var(--rbp-berry); }
+.rbp-oss__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 40px; }
 .rbp-btn--green { background: #5d8c1c; color: #fff !important; box-shadow: 0 8px 20px -8px rgba(93, 140, 28, .7); }
 .rbp-btn--green:hover { background: #4f7f12; }
 .rbp-btn--outline { background: #fff; border-color: #cfdcc0; color: var(--rbp-ink) !important; }

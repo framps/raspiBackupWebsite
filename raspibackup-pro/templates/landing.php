@@ -204,6 +204,7 @@ add_action(
 					</div>
 				<?php endforeach; ?>
 			</div>
+			<p class="rbp-oss__thanks"><span class="rbp-oss__thanks-icon"><?php echo rbp_icon( 'heart', 20 ); // phpcs:ignore ?></span><span><?php echo $kses( $c['opensource_thanks'] ); // phpcs:ignore ?></span></p>
 			<div class="rbp-oss__actions">
 				<a class="rbp-btn rbp-btn--green" href="<?php echo esc_url( $L['github'] ); ?>"<?php echo $ext; // phpcs:ignore ?>><?php echo rbp_icon( 'github', 18 ); // phpcs:ignore ?> <?php echo esc_html( $c['opensource_cta'] ); ?></a>
 				<a class="rbp-btn rbp-btn--outline" href="#community"><?php echo rbp_icon( 'users', 18 ); // phpcs:ignore ?> <?php echo esc_html( $c['opensource_cta2'] ); ?></a>
