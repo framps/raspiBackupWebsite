@@ -85,8 +85,8 @@ add_action(
 		</a>
 		<nav class="rbp-nav" id="rbp-nav" aria-label="<?php echo esc_attr( $c['nav']['menu'] ); ?>">
 			<ul>
+				<li><a href="#opensource"><?php echo esc_html( $c['nav']['opensource'] ); ?></a></li>
 				<li><a href="#features"><?php echo esc_html( $c['nav']['features'] ); ?></a></li>
-				<li><a href="#how"><?php echo esc_html( $c['nav']['how'] ); ?></a></li>
 				<li><a href="#demo"><?php echo esc_html( $c['nav']['demo'] ); ?></a></li>
 				<li><a href="#compat"><?php echo esc_html( $c['nav']['compat'] ); ?></a></li>
 				<li><a href="#docs"><?php echo esc_html( $c['nav']['docs'] ); ?></a></li>
@@ -168,6 +168,46 @@ add_action(
 					<li><strong><?php echo esc_html( $s[0] ); ?></strong><span><?php echo esc_html( $s[1] ); ?></span></li>
 				<?php endforeach; ?>
 			</ul>
+		</div>
+	</section>
+
+	<!-- Open source -->
+	<section class="rbp-section rbp-oss" id="opensource">
+		<div class="rbp-container">
+			<header class="rbp-section__head">
+				<p class="rbp-kicker"><?php echo esc_html( $c['nav']['opensource'] ); ?></p>
+				<h2><?php echo esc_html( $c['opensource_title'] ); ?></h2>
+				<p><?php echo esc_html( $c['opensource_lead'] ); ?></p>
+			</header>
+			<?php
+			$of    = $c['opensource_facts'];
+			$facts = array( $of['since'] );
+			if ( $stats['stars'] ) {
+				$facts[] = array( '★ ' . number_format_i18n( $stats['stars'] ), $of['stars'] );
+			}
+			if ( ! empty( $stats['forks'] ) ) {
+				$facts[] = array( number_format_i18n( $stats['forks'] ), $of['forks'] );
+			}
+			$facts[] = $of['lic'];
+			?>
+			<ul class="rbp-oss__facts">
+				<?php foreach ( $facts as $fa ) : ?>
+					<li><strong><?php echo esc_html( $fa[0] ); ?></strong><span><?php echo esc_html( $fa[1] ); ?></span></li>
+				<?php endforeach; ?>
+			</ul>
+			<div class="rbp-grid rbp-grid--3 rbp-oss__grid">
+				<?php foreach ( $c['opensource'] as $f ) : ?>
+					<div class="rbp-oss__item">
+						<div class="rbp-oss__icon"><?php echo rbp_icon( $f[0], 22 ); // phpcs:ignore ?></div>
+						<h3><?php echo esc_html( $f[1] ); ?></h3>
+						<p><?php echo $kses( $f[2] ); // phpcs:ignore ?></p>
+					</div>
+				<?php endforeach; ?>
+			</div>
+			<div class="rbp-oss__actions">
+				<a class="rbp-btn rbp-btn--green" href="<?php echo esc_url( $L['github'] ); ?>"<?php echo $ext; // phpcs:ignore ?>><?php echo rbp_icon( 'github', 18 ); // phpcs:ignore ?> <?php echo esc_html( $c['opensource_cta'] ); ?></a>
+				<a class="rbp-btn rbp-btn--outline" href="#community"><?php echo rbp_icon( 'users', 18 ); // phpcs:ignore ?> <?php echo esc_html( $c['opensource_cta2'] ); ?></a>
+			</div>
 		</div>
 	</section>
 
@@ -253,8 +293,18 @@ add_action(
 			<header class="rbp-section__head">
 				<p class="rbp-kicker"><?php echo esc_html( $c['nav']['compat'] ); ?></p>
 				<h2><?php echo esc_html( $c['compat_title'] ); ?></h2>
+				<p><?php echo esc_html( $c['compat_lead'] ); ?></p>
 			</header>
-			<div class="rbp-grid rbp-grid--3">
+			<ul class="rbp-hw">
+				<?php foreach ( $c['hardware'] as $hw ) : ?>
+					<li class="rbp-hw__item">
+						<span class="rbp-hw__icon"><?php echo rbp_icon( 'board', 30 ); // phpcs:ignore ?></span>
+						<strong><?php echo esc_html( $hw[0] ); ?></strong>
+						<span><?php echo esc_html( $hw[1] ); ?></span>
+					</li>
+				<?php endforeach; ?>
+			</ul>
+			<div class="rbp-grid rbp-grid--4 rbp-compat">
 				<?php foreach ( $c['compat'] as $col ) : ?>
 					<div class="rbp-card rbp-card--list">
 						<h3><?php echo esc_html( $col['title'] ); ?></h3>
@@ -266,6 +316,7 @@ add_action(
 					</div>
 				<?php endforeach; ?>
 			</div>
+			<p class="rbp-hw__note"><?php echo rbp_icon( 'help', 16 ); // phpcs:ignore ?> <span><?php echo str_replace( '--unsupportedEnvironment', '<code>--unsupportedEnvironment</code>', esc_html( $c['hardware_note'] ) ); // phpcs:ignore ?></span></p>
 		</div>
 	</section>
 

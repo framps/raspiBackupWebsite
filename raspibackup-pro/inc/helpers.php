@@ -100,6 +100,12 @@ function rbp_icon( $name, $size = 24 ) {
 		'alert'    => '<path d="M12 3 2 20h20L12 3Z"/><path d="M12 10v4M12 17h.01"/>',
 		'file'     => '<path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8l-5-5Z"/><path d="M14 3v5h5M9 13h6M9 17h6"/>',
 		'tag'      => '<path d="M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9-9-9Z"/><circle cx="7.5" cy="7.5" r="1.5"/>',
+		'heart'    => '<path d="M12 20s-7.5-4.6-7.5-10.2A4.2 4.2 0 0 1 12 7.2a4.2 4.2 0 0 1 7.5 2.6C19.5 15.4 12 20 12 20Z"/>',
+		'lock'     => '<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3M12 15v2"/>',
+		'unlock'   => '<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 7.7-1.5M12 15v2"/>',
+		'users'    => '<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.6a3.5 3.5 0 0 1 0 6.8M18 14.2a6.5 6.5 0 0 1 3.5 5.8"/>',
+		'branch'   => '<circle cx="6" cy="5" r="2"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="7" r="2"/><path d="M6 7v10M18 9c0 5-6 4-11 8.5"/>',
+		'board'    => '<rect x="2" y="5" width="20" height="14" rx="2"/><path d="M5 8h11" stroke-dasharray="1 1.5"/><rect x="7" y="11" width="5" height="5" rx=".6"/><path d="M22 9h-3v3h3M22 13.5h-3v3h3M14.5 16h2"/>',
 	);
 	// Brand marks (filled).
 	$f = array(
@@ -121,16 +127,17 @@ function rbp_icon( $name, $size = 24 ) {
  * Latest release tag + star count from GitHub, cached 12 hours.
  * The request is made by the server, never by the visitor's browser.
  *
- * @return array{release:string,stars:int}
+ * @return array{release:string,stars:int,forks:int}
  */
 function rbp_github_stats() {
 	$cached = get_transient( 'rbp_github_stats' );
-	if ( is_array( $cached ) ) {
+	if ( is_array( $cached ) && isset( $cached['forks'] ) ) {
 		return $cached;
 	}
 	$stats = array(
 		'release' => '',
 		'stars'   => 0,
+		'forks'   => 0,
 	);
 	$args  = array(
 		'timeout' => 3,
@@ -145,6 +152,7 @@ function rbp_github_stats() {
 	if ( ! is_wp_error( $repo ) && 200 === wp_remote_retrieve_response_code( $repo ) ) {
 		$body           = json_decode( wp_remote_retrieve_body( $repo ), true );
 		$stats['stars'] = isset( $body['stargazers_count'] ) ? (int) $body['stargazers_count'] : 0;
+		$stats['forks'] = isset( $body['forks_count'] ) ? (int) $body['forks_count'] : 0;
 	}
 	$ok = '' !== $stats['release'] || $stats['stars'] > 0;
 	set_transient( 'rbp_github_stats', $stats, $ok ? 12 * HOUR_IN_SECONDS : HOUR_IN_SECONDS );
