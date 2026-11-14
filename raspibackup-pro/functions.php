@@ -10,7 +10,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'RBP_VERSION', '1.1.1' );
+define( 'RBP_VERSION', '1.1.2' );
 define( 'RBP_DIR', get_stylesheet_directory() );
 define( 'RBP_URI', get_stylesheet_directory_uri() );
 

@@ -25,3 +25,17 @@ Upload the PDF (e.g. via *Media* or FTP), then in the editor duplicate one of th
 (block toolbar ⋮ → Duplicate) and change title, texts and the button links.
 
 The cards are styled by the raspiBackup Pro theme; with the classic Zakra theme they are shown as a simple list.
+
+# Impressum / Imprint
+
+`impressum-de.html` (German) and `imprint-en.html` (English) are imprint pages according to § 5 DDG
+and § 18 (2) MStV, built from standard blocks. The repository is public, so they contain
+**placeholders in square brackets** – fill in your real data only in WordPress, never here.
+
+1. *Pages* → **Add New**, title `Impressum`, ⋮ → **Code editor**, paste `impressum-de.html`.
+2. Replace every `[...]` placeholder (name, postal address – no PO box –, email, phone), then **Publish**.
+3. Polylang: set the language to Deutsch, add the English translation with title `Imprint` and `imprint-en.html` the same way.
+4. *Appearance* → *Customize* → raspiBackup Pro → **Impressum URL**: the URL of the German page.
+   The landing page footer then shows the link – on English pages automatically to the `Imprint` translation (theme 1.1.2+).
+5. For all other pages: add the Impressum page to the footer menu (*Appearance* → *Menus*),
+   because the imprint must be reachable from every page.

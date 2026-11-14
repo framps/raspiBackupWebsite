@@ -220,3 +220,20 @@ function rbp_youtube_id( $value ) {
 	}
 	return preg_match( '~^[A-Za-z0-9_-]{11}$~', $value ) ? $value : '';
 }
+
+/**
+ * Returns the URL of the Polylang translation of a page in the current language,
+ * e.g. the English imprint when the setting points to the German one.
+ * External URLs and pages without a translation are returned unchanged.
+ */
+function rbp_translated_url( $url ) {
+	if ( ! $url || ! function_exists( 'pll_get_post' ) ) {
+		return $url;
+	}
+	$id = url_to_postid( $url );
+	if ( ! $id ) {
+		return $url;
+	}
+	$tr = pll_get_post( $id );
+	return $tr ? get_permalink( $tr ) : $url;
+}
