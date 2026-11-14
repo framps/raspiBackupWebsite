@@ -39,3 +39,17 @@ and § 18 (2) MStV, built from standard blocks. The repository is public, so the
    The landing page footer then shows the link – on English pages automatically to the `Imprint` translation (theme 1.1.2+).
 5. For all other pages: add the Impressum page to the footer menu (*Appearance* → *Menus*),
    because the imprint must be reachable from every page.
+
+# Datenschutzerklärung / Privacy policy
+
+`datenschutz-de.html` and `privacy-en.html` describe what the site actually processes (checked 2026-11-14):
+server logs at the hoster, the `pll_language` cookie, no external fonts/scripts, YouTube only after a click
+(youtube-nocookie), GitHub stats fetched server-side, plain links, contact by email/phone.
+Server logs: the hoster (Hetzner) anonymises IP addresses (last part replaced with a random value); logs are kept permanently for statistics.
+Section 6 covers the usage statistics raspiBackup sends to www.linux-tips-and-tricks.de (opt-out `DEFAULT_SEND_STATS=0`).
+
+1. *Pages* → **Add New**, title `Datenschutzerklärung`, language Deutsch, Code editor, paste `datenschutz-de.html`, **Publish**.
+2. Polylang **+** for English: title `Privacy Policy`, paste `privacy-en.html`, **Publish**.
+3. *Settings* → *Privacy* → choose the German page as **privacy policy page** → *Use This Page*.
+   The landing page footer then links it, on English pages automatically to the translation.
+4. Add the page to the footer menu for all other pages.
