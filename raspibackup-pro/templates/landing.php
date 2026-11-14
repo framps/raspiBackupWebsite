@@ -358,6 +358,7 @@ add_action(
 					</a>
 				<?php endforeach; ?>
 			</div>
+			<p class="rbp-oss__thanks rbp-oss__thanks--tips" id="<?php echo 'de' === $rbp_lang ? 'trinkgeld' : 'tips'; ?>"><span class="rbp-oss__thanks-icon"><?php echo rbp_icon( 'star', 20 ); // phpcs:ignore ?></span><span><?php echo $kses( $c['opensource_tips'] ); // phpcs:ignore ?></span></p>
 		</div>
 	</section>
 
